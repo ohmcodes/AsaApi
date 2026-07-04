@@ -48,7 +48,7 @@ struct FPrimalChatMessage {
 // FUNCTION MISSING: FPrimalChatMessage.operator=(FPrimalChatMessage&)
 };
 
-struct FPrimalPlayerCharacterConfigStructReplicated
+struct __declspec(align(8)) FPrimalPlayerCharacterConfigStructReplicated
 {
     unsigned __int8 bIsFemale : 1;
     FLinearColor BodyColors[4];
@@ -68,25 +68,29 @@ struct FPrimalPlayerCharacterConfigStructReplicated
     unsigned __int8 DynamicMaterialBytes[50];
     int PlayerVoiceCollectionIndex;
     unsigned __int8 bUsingCustomPlayerVoiceCollection : 1;
+    unsigned __int8 DynamicFaceMaterialBytes[21];
+    unsigned __int8 DynamicFaceIndex[3];
 
     // Fields
 
-    FieldArray<FLinearColor, 4> BodyColorsField() { return { this, "FPrimalPlayerCharacterConfigStructReplicated.BodyColors" }; }
+    FieldArray<FLinearColor, 4>& BodyColorsField() { return *GetNativePointerField<FieldArray<FLinearColor, 4>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.BodyColors"); }
     FString& PlayerCharacterNameField() { return *GetNativePointerField<FString*>(this, "FPrimalPlayerCharacterConfigStructReplicated.PlayerCharacterName"); }
-    unsigned __int8& FacialHairIndexField() { return *GetNativePointerField<unsigned __int8*>(this, "FPrimalPlayerCharacterConfigStructReplicated.FacialHairIndex"); }
-    unsigned __int8& HeadHairIndexField() { return *GetNativePointerField<unsigned __int8*>(this, "FPrimalPlayerCharacterConfigStructReplicated.HeadHairIndex"); }
-    unsigned __int8& EyebrowIndexField() { return *GetNativePointerField<unsigned __int8*>(this, "FPrimalPlayerCharacterConfigStructReplicated.EyebrowIndex"); }
-    __int64& FacialHairCustomCosmeticModIDField() { return *GetNativePointerField<__int64*>(this, "FPrimalPlayerCharacterConfigStructReplicated.FacialHairCustomCosmeticModID"); }
-    __int64& HeadHairCustomCosmeticModIDField() { return *GetNativePointerField<__int64*>(this, "FPrimalPlayerCharacterConfigStructReplicated.HeadHairCustomCosmeticModID"); }
-    __int64& EyebrowCustomCosmeticModIDField() { return *GetNativePointerField<__int64*>(this, "FPrimalPlayerCharacterConfigStructReplicated.EyebrowCustomCosmeticModID"); }
+    unsigned char& FacialHairIndexField() { return *GetNativePointerField<unsigned char*>(this, "FPrimalPlayerCharacterConfigStructReplicated.FacialHairIndex"); }
+    unsigned char& HeadHairIndexField() { return *GetNativePointerField<unsigned char*>(this, "FPrimalPlayerCharacterConfigStructReplicated.HeadHairIndex"); }
+    unsigned char& EyebrowIndexField() { return *GetNativePointerField<unsigned char*>(this, "FPrimalPlayerCharacterConfigStructReplicated.EyebrowIndex"); }
+    long& FacialHairCustomCosmeticModIDField() { return *GetNativePointerField<long*>(this, "FPrimalPlayerCharacterConfigStructReplicated.FacialHairCustomCosmeticModID"); }
+    long& HeadHairCustomCosmeticModIDField() { return *GetNativePointerField<long*>(this, "FPrimalPlayerCharacterConfigStructReplicated.HeadHairCustomCosmeticModID"); }
+    long& EyebrowCustomCosmeticModIDField() { return *GetNativePointerField<long*>(this, "FPrimalPlayerCharacterConfigStructReplicated.EyebrowCustomCosmeticModID"); }
     float& PercentOfFullHeadHairGrowthField() { return *GetNativePointerField<float*>(this, "FPrimalPlayerCharacterConfigStructReplicated.PercentOfFullHeadHairGrowth"); }
     float& PercentOfFullFacialHairGrowthField() { return *GetNativePointerField<float*>(this, "FPrimalPlayerCharacterConfigStructReplicated.PercentOfFullFacialHairGrowth"); }
-    FieldArray<float, 26> RawBoneModifiersField() { return { this, "FPrimalPlayerCharacterConfigStructReplicated.RawBoneModifiers" }; }
+    FieldArray<float, 26>& RawBoneModifiersField() { return *GetNativePointerField<FieldArray<float, 26>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.RawBoneModifiers"); }
     int& PlayerSpawnRegionIndexField() { return *GetNativePointerField<int*>(this, "FPrimalPlayerCharacterConfigStructReplicated.PlayerSpawnRegionIndex"); }
-    FieldArray<unsigned __int8, 2> OverrideHeadHairColorField() { return { this, "FPrimalPlayerCharacterConfigStructReplicated.OverrideHeadHairColor" }; }
-    FieldArray<unsigned __int8, 2> OverrideFacialHairColorField() { return { this, "FPrimalPlayerCharacterConfigStructReplicated.OverrideFacialHairColor" }; }
-    FieldArray<unsigned __int8, 50> DynamicMaterialBytesField() { return { this, "FPrimalPlayerCharacterConfigStructReplicated.DynamicMaterialBytes" }; }
+    FieldArray<unsigned char, 2>& OverrideHeadHairColorField() { return *GetNativePointerField<FieldArray<unsigned char, 2>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.OverrideHeadHairColor"); }
+    FieldArray<unsigned char, 2>& OverrideFacialHairColorField() { return *GetNativePointerField<FieldArray<unsigned char, 2>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.OverrideFacialHairColor"); }
+    FieldArray<unsigned char, 50>& DynamicMaterialBytesField() { return *GetNativePointerField<FieldArray<unsigned char, 50>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.DynamicMaterialBytes"); }
     int& PlayerVoiceCollectionIndexField() { return *GetNativePointerField<int*>(this, "FPrimalPlayerCharacterConfigStructReplicated.PlayerVoiceCollectionIndex"); }
+    FieldArray<unsigned char, 21>& DynamicFaceMaterialBytesField() { return *GetNativePointerField<FieldArray<unsigned char, 21>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.DynamicFaceMaterialBytes"); }
+    FieldArray<unsigned char, 3>& DynamicFaceIndexField() { return *GetNativePointerField<FieldArray<unsigned char, 3>*>(this, "FPrimalPlayerCharacterConfigStructReplicated.DynamicFaceIndex"); }
 
     // Bitfields
 
@@ -96,9 +100,9 @@ struct FPrimalPlayerCharacterConfigStructReplicated
     // Functions
 
     static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalPlayerCharacterConfigStructReplicated.StaticStruct()"); }
-    FPrimalPlayerCharacterConfigStructReplicated* operator=(const FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated*, const FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&)", __that); }
-    FPrimalPlayerCharacterConfigStructReplicated* operator=(FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated*, FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&)", __that); }
     FPrimalPlayerCharacterConfigStruct* GetPlayerCharacterConfig(FPrimalPlayerCharacterConfigStruct* result) { return NativeCall<FPrimalPlayerCharacterConfigStruct*, FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStructReplicated.GetPlayerCharacterConfig()", result); }
+    FPrimalPlayerCharacterConfigStructReplicated& operator=(struct FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated&, struct FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&&)", __that); }
+    FPrimalPlayerCharacterConfigStructReplicated& operator=(const struct FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated&, const struct FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&)", __that); }
 };
 
 struct FCollisionShape
@@ -3793,7 +3797,7 @@ struct AShooterPlayerController : ABasePlayerController
     void ServerRequestInventoryUseItemWithActor_Implementation(AActor* anActor, UPrimalInventoryComponent* inventoryComp, FItemNetID itemID1, int AdditionalData) { NativeCall<void, AActor*, UPrimalInventoryComponent*, FItemNetID, int>(this, "AShooterPlayerController.ServerRequestInventoryUseItemWithActor_Implementation(AActor*,UPrimalInventoryComponent*,FItemNetID,int)", anActor, inventoryComp, itemID1, AdditionalData); }
     void ServerRequestContainerFuel_Implementation(APrimalStructureItemContainer* Container) { NativeCall<void, APrimalStructureItemContainer*>(this, "AShooterPlayerController.ServerRequestContainerFuel_Implementation(APrimalStructureItemContainer*)", Container); }
     void ClientSetContainerFuel_Implementation(APrimalStructureItemContainer* Container, float FuelQuantity) { NativeCall<void, APrimalStructureItemContainer*, float>(this, "AShooterPlayerController.ClientSetContainerFuel_Implementation(APrimalStructureItemContainer*,float)", Container, FuelQuantity); }
-    void ServerRequestInventoryUseItem_Implementation(UPrimalInventoryComponent* inventoryComp, FItemNetID itemID) { NativeCall<void, UPrimalInventoryComponent*, FItemNetID>(this, "AShooterPlayerController.ServerRequestInventoryUseItem_Implementation(UPrimalInventoryComponent*,FItemNetID)", inventoryComp, itemID); }
+    void ServerRequestInventoryUseItem_Implementation(UPrimalInventoryComponent* inventoryComp, FItemNetID itemID, int SlotIndex) { NativeCall<void, UPrimalInventoryComponent*, FItemNetID, int>(this, "AShooterPlayerController.ServerRequestInventoryUseItem_Implementation(UPrimalInventoryComponent*,FItemNetID,int)", inventoryComp, itemID, SlotIndex); }
     void ServerActorViewRemoteInventory_Implementation(UPrimalInventoryComponent* inventoryComp) { NativeCall<void, UPrimalInventoryComponent*>(this, "AShooterPlayerController.ServerActorViewRemoteInventory_Implementation(UPrimalInventoryComponent*)", inventoryComp); }
     void ServerActorCloseRemoteInventory_Implementation(UPrimalInventoryComponent* inventoryComp) { NativeCall<void, UPrimalInventoryComponent*>(this, "AShooterPlayerController.ServerActorCloseRemoteInventory_Implementation(UPrimalInventoryComponent*)", inventoryComp); }
     void ServerDropFromRemoteInventory_Implementation(UPrimalInventoryComponent* inventoryComp, FItemNetID itemID) { NativeCall<void, UPrimalInventoryComponent*, FItemNetID>(this, "AShooterPlayerController.ServerDropFromRemoteInventory_Implementation(UPrimalInventoryComponent*,FItemNetID)", inventoryComp, itemID); }
@@ -5907,6 +5911,8 @@ struct APrimalCharacter : ACharacter
     bool ShouldUseArmorDurabilityVFX() { return NativeCall<bool>(this, "APrimalCharacter.ShouldUseArmorDurabilityVFX()"); }
     //void GetExtraSaveMovedData(FSavedMove_Character* ForMove) { NativeCall<void, FSavedMove_Character*>(this, "APrimalCharacter.GetExtraSaveMovedData(FSavedMove_Character*)", ForMove); }
     FPrimalCharacterSparseClassData* GetPrimalCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) const { return NativeCall<FPrimalCharacterSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalCharacter.GetPrimalCharacterSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+    FString* PlayerCommand(FString* result, FString* TheCommand) { return NativeCall<FString*, FString*, FString*>(this, "APrimalCharacter.PlayerCommand(FString&)", result, TheCommand); }
+    FString* PlayerCommand_Implementation(FString* result, FString* TheCommand) { return NativeCall<FString*, FString*, FString*>(this, "APrimalCharacter.PlayerCommand_Implementation(FString&)", result, TheCommand); }
 };
 
 struct FShooterCharacterSparseClassData : FPrimalCharacterSparseClassData
@@ -9027,7 +9033,6 @@ struct APrimalDinoCharacter : APrimalCharacter
     bool ShouldUseDurabilityVarForItemType(TEnumAsByte<EPrimalEquipmentType::Type> TheItemType) { return NativeCall<bool, TEnumAsByte<EPrimalEquipmentType::Type>>(this, "APrimalDinoCharacter.ShouldUseDurabilityVarForItemType(TEnumAsByte<EPrimalEquipmentType::Type>)", TheItemType); }
     bool AllowClaiming(APlayerController* forPlayer) { return NativeCall<bool, APlayerController*>(this, "APrimalDinoCharacter.AllowClaiming(APlayerController*)", forPlayer); }
     static APrimalDinoCharacter* BPStaticCreateBabyDino_V2(UWorld* TheWorld, TSubclassOf<APrimalDinoCharacter> EggDinoClassToSpawn, const UE::Math::TVector<double>& theGroundLoc, float actorRotationYaw, TArray<unsigned char, TSizedDefaultAllocator<32> >* EggColorSetIndices, TArray<unsigned char, TSizedDefaultAllocator<32> >* EggNumberOfLevelUpPointsApplied, TArray<unsigned char, TSizedDefaultAllocator<32> >* EggMutationsApplied, float EggTamedIneffectivenessModifier, TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >* EggDinoAncestors, TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >* EggDinoAncestorsMale, APrimalDinoCharacter** ExtraBaby1, APrimalDinoCharacter** ExtraBaby2, TArray<FName, TSizedDefaultAllocator<32> >* EggDinoGeneTraits, int NotifyTeamOverride, int EggRandomMutationsFemale, int EggRandomMutationsMale, int EggGenderOverride) { return NativeCall<APrimalDinoCharacter*, UWorld*, TSubclassOf<APrimalDinoCharacter>&, const UE::Math::TVector<double>&, float, TArray<unsigned char, TSizedDefaultAllocator<32> >*, TArray<unsigned char, TSizedDefaultAllocator<32> >*, TArray<unsigned char, TSizedDefaultAllocator<32> >*, float, TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >*, TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >*, APrimalDinoCharacter**, APrimalDinoCharacter**, TArray<FName, TSizedDefaultAllocator<32> >*, int, int, int, int>(nullptr, "APrimalDinoCharacter.BPStaticCreateBabyDino_V2(UWorld*,TSubclassOf<APrimalDinoCharacter>,UE::Math::TVector<double>&,float,TArray<unsignedchar,TSizedDefaultAllocator<32>>,TArray<unsignedchar,TSizedDefaultAllocator<32>>,TArray<unsignedchar,TSizedDefaultAllocator<32>>,float,TArray<FDinoAncestorsEntry,TSizedDefaultAllocator<32>>,TArray<FDinoAncestorsEntry,TSizedDefaultAllocator<32>>,APrimalDinoCharacter*&,APrimalDinoCharacter*&,TArray<FName,TSizedDefaultAllocator<32>>,int,int,int,int)", TheWorld, EggDinoClassToSpawn, theGroundLoc, actorRotationYaw, EggColorSetIndices, EggNumberOfLevelUpPointsApplied, EggMutationsApplied, EggTamedIneffectivenessModifier, EggDinoAncestors, EggDinoAncestorsMale, ExtraBaby1, ExtraBaby2, EggDinoGeneTraits, NotifyTeamOverride, EggRandomMutationsFemale, EggRandomMutationsMale, EggGenderOverride); }
-    FPrimalDinoCharacterSparseClassData* GetPrimalDinoCharacterSparseClassData()const { return NativeCall<FPrimalDinoCharacterSparseClassData*>(this, "APrimalDinoCharacter.GetPrimalDinoCharacterSparseClassData()"); }
     FPrimalDinoCharacterSparseClassData* GetPrimalDinoCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) { return NativeCall<FPrimalDinoCharacterSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalDinoCharacter.GetPrimalDinoCharacterSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
     bool GetUsesColorizationRegion(int RegionIndex) { return NativeCall<bool, int>(this, "APrimalDinoCharacter.GetUsesColorizationRegion(int)", RegionIndex); }
 
@@ -13705,4 +13710,19 @@ struct UGeneTraitDefinitions : UObject
     static FName GeneTraits_SplitGeneTraitFNameAndTier(FName TraitName, int* TraitTierRank) { return NativeCall<FName, FName, int*>(nullptr, "UGeneTraitDefinitions.GeneTraits_SplitGeneTraitFNameAndTier(FName,int&)", TraitName, TraitTierRank); }
     bool GeneTraits_AddRandomSpawnGeneTrait_SkipCode_Thralls(struct UObject* TargetToEvaluate) { return NativeCall<bool, struct UObject*>(this, "UGeneTraitDefinitions.GeneTraits_AddRandomSpawnGeneTrait_SkipCode_Thralls(UObject*)", TargetToEvaluate); }
 
+};
+
+struct AMissionType : AActor
+{
+    // Fields
+
+    FString& MissionDisplayNameField() { return *GetNativePointerField<FString*>(this, "AMissionType.MissionDisplayName"); }
+    FString& MissionDescriptionField() { return *GetNativePointerField<FString*>(this, "AMissionType.MissionDescription"); }
+
+    // Bitfields
+
+
+    // Functions
+
+    void SendMissionCompleteMessages(const struct FCharacterAndControllerPair* Player, bool bCommpletedSuccessfully, float XPRewarded, class TArray<UPrimalItem*, TSizedDefaultAllocator<32> >* RewardLootItems) { NativeCall<void, const struct FCharacterAndControllerPair*, bool, float, class TArray<UPrimalItem*, TSizedDefaultAllocator<32> >*>(this, "AMissionType.SendMissionCompleteMessages(FCharacterAndControllerPair&,bool,float,TArray<UPrimalItem*,TSizedDefaultAllocator<32>>)", Player, bCommpletedSuccessfully, XPRewarded, RewardLootItems); }
 };

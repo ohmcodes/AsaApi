@@ -239,7 +239,13 @@ namespace AsaApi
 		*/
 		static FORCEINLINE FString GetSteamName(AController* player_controller)
 		{
-			return player_controller != nullptr ? player_controller->PlayerStateField()->PlayerNamePrivateField() : "";
+			if (player_controller == nullptr)
+				return "";
+
+			if (player_controller->PlayerStateField().Get() == nullptr)
+				return "";
+
+			return player_controller->PlayerStateField().Get()->PlayerNamePrivateField();
 		}
 
 		/**
@@ -275,7 +281,7 @@ namespace AsaApi
 			TSubclassOf<UPrimalItem> archetype;
 			archetype.uClass = UVictoryCore::BPLoadClass(bpFstr);
 
-			UPrimalItem* item = UPrimalItem::AddNewItem(archetype, nullptr, false, false, item_quality, false, amount, force_blueprint, 0, false, nullptr, 0, 0, 0, true, false, false);
+			UPrimalItem* item = UPrimalItem::AddNewItem(archetype, nullptr, false, false, item_quality, false, amount, force_blueprint, 0, false, nullptr, 0, 0, 0, true, false, false, false, GetWorld());
 
 			if (!item)
 				return false;

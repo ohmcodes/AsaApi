@@ -2768,7 +2768,7 @@ struct AShooterGameMode : APrimalGameMode
 	bool IsSpawnpointAllowed(APlayerStart* SpawnPoint, AController* Player) const { return NativeCall<bool, APlayerStart*, AController*>(this, "AShooterGameMode.IsSpawnpointAllowed(APlayerStart*,AController*)", SpawnPoint, Player); }
 	void LogFailedWaterDinoSpawn(AActor* FailedSpawned) { NativeCall<void, AActor*>(this, "AShooterGameMode.LogFailedWaterDinoSpawn(AActor*)", FailedSpawned); }
 	bool AllowNotifyRemotePlayerDeath(AShooterCharacter* forChar) { return NativeCall<bool, AShooterCharacter*>(this, "AShooterGameMode.AllowNotifyRemotePlayerDeath(AShooterCharacter*)", forChar); }
-
+	int GetTribeIDOfPlayerID(unsigned long PlayerDataID) { return NativeCall<int, unsigned long>(this, "AShooterGameMode.GetTribeIDOfPlayerID(unsigned__int64)", PlayerDataID); }
 };
 
 struct ISaveGameInterface {
