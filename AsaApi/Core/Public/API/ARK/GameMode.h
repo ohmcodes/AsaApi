@@ -314,7 +314,8 @@ struct AShooterGameState : AGameState
 	// Functions
 
 	bool IsClusterServer()const { return NativeCall<bool>(this, "AShooterGameState.IsClusterServer()"); }
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "AShooterGameState.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "AShooterGameState.GetPrivateStaticClass()"); }
 	void AddTokens(int Quantity, int byTribe) { NativeCall<void, int, int>(this, "AShooterGameState.AddTokens(int,int)", Quantity, byTribe); }
 	bool AllowDownloadDino(const TSoftClassPtr<APrimalDinoCharacter>* TheDinoClass) { return NativeCall<bool, const TSoftClassPtr<APrimalDinoCharacter>*>(this, "AShooterGameState.AllowDownloadDino(TSoftClassPtr<APrimalDinoCharacter>&)", TheDinoClass); }
 	void ForceStartMatch(bool PreventFinishTheMatch, bool UseQuetzalBus) { NativeCall<void, bool, bool>(this, "AShooterGameState.ForceStartMatch(bool,bool)", PreventFinishTheMatch, UseQuetzalBus); }
@@ -1293,7 +1294,7 @@ struct UMinimapData : UObject
 
 	// Functions
 
-	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "UMinimapData.GetPrivateStaticClass()"); }
+	static UClass* GetPrivateStaticClass() { return StaticClass(); }
 	static void StaticRegisterNativesUMinimapData() { NativeCall<void>(nullptr, "UMinimapData.StaticRegisterNativesUMinimapData()"); }
 	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "UMinimapData.StaticClass()"); }
 };
@@ -1455,7 +1456,8 @@ struct AARKNXWorldSettings : AWorldSettings
 
 	// Functions
 
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "AARKNXWorldSettings.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "AARKNXWorldSettings.GetPrivateStaticClass()"); }
 	void BeginPlay() { NativeCall<void>(this, "AARKNXWorldSettings.BeginPlay()"); }
 	void Tick(float DeltaTime) { NativeCall<void, float>(this, "AARKNXWorldSettings.Tick(float)", DeltaTime); }
 };
@@ -1831,7 +1833,8 @@ struct APrimalGameMode : AGameMode
 
 	// Functions
 
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalGameMode.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalGameMode.GetPrivateStaticClass()"); }
 	//void ~APrimalGameMode() { NativeCall<void>(this, "APrimalGameMode.~APrimalGameMode()"); }
 	void FinishRestartPlayer(AController* NewPlayer, const UE::Math::TRotator<double>* StartRotation) { NativeCall<void, AController*, const UE::Math::TRotator<double>*>(this, "APrimalGameMode.FinishRestartPlayer(AController*,UE::Math::TRotator<double>&)", NewPlayer, StartRotation); }
 };
@@ -2726,7 +2729,7 @@ struct AShooterGameMode : APrimalGameMode
 	bool GetBoolOption(const FString& Options, const FString& ParseString, bool CurrentValue) { return NativeCall<bool, const FString&, const FString&, bool>(this, "AShooterGameMode.GetBoolOption(FString&,FString&,bool)", Options, ParseString, CurrentValue); }
 	void Logout(AController* Exiting) { NativeCall<void, AController*>(this, "AShooterGameMode.Logout(AController*)", Exiting); }
 	bool PlayerCanRestart_Implementation(APlayerController* Player) { return NativeCall<bool, APlayerController*>(this, "AShooterGameMode.PlayerCanRestart_Implementation(APlayerController*)", Player); }
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "AShooterGameMode.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
 	void LoadedWorld() { NativeCall<void>(this, "AShooterGameMode.LoadedWorld()"); }
 	void SavePlayersJoinNoCheckList() { NativeCall<void>(this, "AShooterGameMode.SavePlayersJoinNoCheckList()"); }
 	void KickPlayerController(APlayerController* thePC, const FString& KickMessage) { NativeCall<void, APlayerController*, const FString&>(this, "AShooterGameMode.KickPlayerController(APlayerController*,FString&)", thePC, KickMessage); }
@@ -2942,7 +2945,8 @@ struct AGameNetworkManager : AInfo
 
 	// Functions
 
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "AGameNetworkManager.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "AGameNetworkManager.GetPrivateStaticClass()"); }
 	void EnableStandbyCheatDetection(bool bIsEnabled) { NativeCall<void, bool>(this, "AGameNetworkManager.EnableStandbyCheatDetection(bool)", bIsEnabled); }
 	void PostInitializeComponents() { NativeCall<void>(this, "AGameNetworkManager.PostInitializeComponents()"); }
 	void UpdateNetSpeedsTimer() { NativeCall<void>(this, "AGameNetworkManager.UpdateNetSpeedsTimer()"); }
@@ -2969,7 +2973,8 @@ struct AGameSession : AInfo
 	// Functions
 
 	void GetActorBounds(bool bOnlyCollidingComponents, UE::Math::TVector<double>* Origin, UE::Math::TVector<double>* BoxExtent, bool bIncludeFromChildActors) { NativeCall<void, bool, UE::Math::TVector<double>*, UE::Math::TVector<double>*, bool>(this, "AGameSession.GetActorBounds(bool,UE::Math::TVector<double>&,UE::Math::TVector<double>&,bool)", bOnlyCollidingComponents, Origin, BoxExtent, bIncludeFromChildActors); }
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "AGameSession.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "AGameSession.GetPrivateStaticClass()"); }
 	bool RequiresPushToTalk() { return NativeCall<bool>(this, "AGameSession.RequiresPushToTalk()"); }
 	void HandleMatchHasStarted() { NativeCall<void>(this, "AGameSession.HandleMatchHasStarted()"); }
 	void HandleMatchHasEnded() { NativeCall<void>(this, "AGameSession.HandleMatchHasEnded()"); }

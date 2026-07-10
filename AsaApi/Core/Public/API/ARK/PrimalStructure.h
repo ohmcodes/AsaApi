@@ -785,7 +785,7 @@ struct APrimalStructure : APrimalTargetableActor
     void SetEnabledPrimarySnappedStructureParent(bool bEnabled) { NativeCall<void, bool>(this, "APrimalStructure.SetEnabledPrimarySnappedStructureParent(bool)", bEnabled); }
     static void StaticRegisterNativesAPrimalStructure() { NativeCall<void>(nullptr, "APrimalStructure.StaticRegisterNativesAPrimalStructure()"); }
     static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructure.GetPrivateStaticClass()"); }
-    static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructure.StaticClass()"); }
+    static UClass* StaticClass() { return GetPrivateStaticClass(); }
     void ValidateGeneratedRepEnums(const TArray<FRepRecord, TSizedDefaultAllocator<32> >* ClassReps) { NativeCall<void, const TArray<FRepRecord, TSizedDefaultAllocator<32> >*>(this, "APrimalStructure.ValidateGeneratedRepEnums(TArray<FRepRecord,TSizedDefaultAllocator<32>>&)", ClassReps); }
     bool FillVolumetricDispatchesForFluidInteraction(bool bDebugb, bool bTriggerEvents, UActorComponent* interactionComponent, AActor* dispatcher) { return NativeCall<bool, bool, bool, UActorComponent*, AActor*>(this, "APrimalStructure.FillVolumetricDispatchesForFluidInteraction(bool,bool,UActorComponent*,AActor*)", bDebugb, bTriggerEvents, interactionComponent, dispatcher); }
     bool FillVolumetricDispatchesForFoliageInteraction(bool bDebugb, UActorComponent* interactionComponent) { return NativeCall<bool, bool, UActorComponent*>(this, "APrimalStructure.FillVolumetricDispatchesForFoliageInteraction(bool,UActorComponent*)", bDebugb, interactionComponent); }
@@ -1234,7 +1234,8 @@ struct APrimalStructureItemContainer : APrimalStructure
     // Functions
 
     bool IsPowered() { return NativeCall<bool>(this, "APrimalStructureItemContainer.IsPowered()"); }
-    static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureItemContainer.StaticClass()"); }
+    static UClass* StaticClass() { return GetPrivateStaticClass(); }
+    static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureItemContainer.GetPrivateStaticClass()"); }
     bool BPApplyPinCode(AShooterPlayerController* ForPC, int appledPinCode, bool bIsSetting, int TheCustomIndex) { return NativeCall<bool, AShooterPlayerController*, int, bool, int>(this, "APrimalStructureItemContainer.BPApplyPinCode(AShooterPlayerController*,int,bool,int)", ForPC, appledPinCode, bIsSetting, TheCustomIndex); }
     void NetUpdateBoxName(const FString* NewName) { NativeCall<void, const FString*>(this, "APrimalStructureItemContainer.NetUpdateBoxName(FString&)", NewName); }
     void OnContainerRenamed() { NativeCall<void>(this, "APrimalStructureItemContainer.OnContainerRenamed()"); }
@@ -2328,7 +2329,8 @@ struct APrimalStructureTribeFlag : APrimalStructure
 
     // Functions
 
-    static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureTribeFlag.StaticClass()"); }
+    static UClass* StaticClass() { return GetPrivateStaticClass(); }
+    static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureTribeFlag.GetPrivateStaticClass()"); }
     void ValidateGeneratedRepEnums(const TArray<FRepRecord, TSizedDefaultAllocator<32> >* ClassReps) { NativeCall<void, const TArray<FRepRecord, TSizedDefaultAllocator<32> >*>(this, "APrimalStructureTribeFlag.ValidateGeneratedRepEnums(TArray<FRepRecord,TSizedDefaultAllocator<32>>&)", ClassReps); }
     bool AllowColoringBy(APlayerController* ForPC, UObject* anItem) { return NativeCall<bool, APlayerController*, UObject*>(this, "APrimalStructureTribeFlag.AllowColoringBy(APlayerController*,UObject*)", ForPC, anItem); }
     void GetLifetimeReplicatedProps(TArray<FLifetimeProperty, TSizedDefaultAllocator<32> >* OutLifetimeProps) { NativeCall<void, TArray<FLifetimeProperty, TSizedDefaultAllocator<32> >*>(this, "APrimalStructureTribeFlag.GetLifetimeReplicatedProps(TArray<FLifetimeProperty,TSizedDefaultAllocator<32>>&)", OutLifetimeProps); }
@@ -2496,7 +2498,7 @@ struct APrimalStructureTurret : APrimalStructureItemContainer
     // Functions
 
     static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureTurret.GetPrivateStaticClass()"); }
-    static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureTurret.StaticClass()"); }
+    static UClass* StaticClass() { return GetPrivateStaticClass(); }
     static void StaticRegisterNativesAPrimalStructureTurret() { NativeCall<void>(nullptr, "APrimalStructureTurret.StaticRegisterNativesAPrimalStructureTurret()"); }
     void ValidateGeneratedRepEnums(const TArray<FRepRecord, TSizedDefaultAllocator<32> >* ClassReps) { NativeCall<void, const TArray<FRepRecord, TSizedDefaultAllocator<32> >*>(this, "APrimalStructureTurret.ValidateGeneratedRepEnums(TArray<FRepRecord,TSizedDefaultAllocator<32>>&)", ClassReps); }
     void DrawHUD(AShooterHUD* HUD) { NativeCall<void, AShooterHUD*>(this, "APrimalStructureTurret.DrawHUD(AShooterHUD*)", HUD); }

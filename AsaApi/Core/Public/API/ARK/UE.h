@@ -708,7 +708,7 @@ struct USparseDataOverrideManager : UObject
 	static int Internal_OverrideRandomMutationRolls(int BaseValue, const UObject* ForInstance) { return NativeCall<int, int, const UObject*>(nullptr, "USparseDataOverrideManager.Internal_OverrideRandomMutationRolls(int,UObject*)", BaseValue, ForInstance); }
 	bool bIsAlphaEliteMegaDino_Override(bool BaseValue, bool CurrentValue, const UObject* ForInstance) { return NativeCall<bool, bool, bool, const UObject*>(this, "USparseDataOverrideManager.bIsAlphaEliteMegaDino_Override(bool,bool,UObject*)", BaseValue, CurrentValue, ForInstance); }
 	float MateBoostDamageGiveMultiplier_Override_Implementation(float BaseValue, float CurrentValue, const UObject* ForInstance) { return NativeCall<float, float, float, const UObject*>(this, "USparseDataOverrideManager.MateBoostDamageGiveMultiplier_Override_Implementation(float,float,UObject*)", BaseValue, CurrentValue, ForInstance); }
-	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "USparseDataOverrideManager.GetPrivateStaticClass()"); }
+	static UClass* GetPrivateStaticClass() { return StaticClass(); }
 	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "USparseDataOverrideManager.StaticClass()"); }
 	static float Internal_OverrideMateBoostDamageGiveMultiplier(float BaseValue, const UObject* ForInstance) { return NativeCall<float, float, const UObject*>(nullptr, "USparseDataOverrideManager.Internal_OverrideMateBoostDamageGiveMultiplier(float,UObject*)", BaseValue, ForInstance); }
 	float MateBoostRange_Override_Implementation(float BaseValue, float CurrentValue, const UObject* ForInstance) { return NativeCall<float, float, float, const UObject*>(this, "USparseDataOverrideManager.MateBoostRange_Override_Implementation(float,float,UObject*)", BaseValue, CurrentValue, ForInstance); }
@@ -1079,6 +1079,7 @@ struct UStreamableRenderAsset : UObject
 	bool DoesMipDataExist(const int MipIndex) { return NativeCall<bool, const int>(this, "UStreamableRenderAsset.DoesMipDataExist(int)", MipIndex); }
 	unsigned int GetMipIoFilenameHash(const int MipIndex) { return NativeCall<unsigned int, const int>(this, "UStreamableRenderAsset.GetMipIoFilenameHash(int)", MipIndex); }
 	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "UStreamableRenderAsset.StaticClass()"); }
+	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "UStreamableRenderAsset.GetPrivateStaticClass()"); }
 	static void StaticRegisterNativesUStreamableRenderAsset() { NativeCall<void>(nullptr, "UStreamableRenderAsset.StaticRegisterNativesUStreamableRenderAsset()"); }
 	//void UStreamableRenderAsset(const FObjectInitializer* ObjectInitializer) { NativeCall<void, const FObjectInitializer*>(this, "UStreamableRenderAsset.UStreamableRenderAsset(FObjectInitializer*)", ObjectInitializer); }
 	//void ~UStreamableRenderAsset() { NativeCall<void>(this, "UStreamableRenderAsset.~UStreamableRenderAsset()"); }
@@ -1800,7 +1801,7 @@ struct USoundBase : UObject
 	//FSoundAttenuationSettings const* GetAttenuationSettingsToApply()const { return NativeCall<FSoundAttenuationSettings const*>(this, "USoundBase.GetAttenuationSettingsToApply()"); }
 	void InitResources() { NativeCall<void>(this, "USoundBase.InitResources()"); }
 	float GetMaxDistance()const { return NativeCall<float>(this, "USoundBase.GetMaxDistance()"); }
-	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "USoundBase.StaticClass()"); }
+	static UClass* StaticClass() { return GetPrivateStaticClass(); }
 	//USoundSubmixBase* GetSoundSubmix()const { return NativeCall<USoundSubmixBase*>(this, "USoundBase.GetSoundSubmix()"); }
 	bool HasConcatenatorNode()const { return NativeCall<bool>(this, "USoundBase.HasConcatenatorNode()"); }
 	bool EnableSubmixSendsOnPreview()const { return NativeCall<bool>(this, "USoundBase.EnableSubmixSendsOnPreview()"); }
