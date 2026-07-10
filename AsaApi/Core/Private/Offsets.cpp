@@ -2,6 +2,9 @@
 #include "Logger/Logger.h"
 #include <Psapi.h>
 #pragma comment(lib, "Psapi.lib")
+#include <fstream>
+#include <json.hpp>
+#include <Tools.h>
 
 namespace
 {
@@ -71,6 +74,19 @@ namespace API
 {
 	Offsets::Offsets()
 	{
+		try
+		{
+			const std::string config_path = AsaApi::Tools::GetCurrentDir() + "/config.json";
+			std::ifstream f(config_path);
+			if (f.is_open())
+			{
+				nlohmann::json cfg;
+				f >> cfg;
+				hooks_do_not_throw_ = cfg["settings"].value("HooksDoNotThrow", false);
+			}
+		}
+		catch (...) {}
+
 		module_base_ = data_base_ = reinterpret_cast<DWORD64>(GetModuleHandle(nullptr));
 
 		const auto dos_header = reinterpret_cast<PIMAGE_DOS_HEADER>(module_base_);
@@ -131,8 +147,13 @@ namespace API
 		{
 			Log::GetLog()->critical("Failed to get the offset of '{}'.\nRequested by plugin: {}", name, GetCallingModuleName());
 			Log::GetLog()->flush();
-			Sleep(10000);
-			throw;
+			if (hooks_do_not_throw_)
+				return nullptr;
+			else
+			{
+				Sleep(10000);
+				throw;
+			}
 		}
 
 		return reinterpret_cast<LPVOID>(module_base_ + static_cast<DWORD64>(offsets_dump_[name]));
@@ -144,8 +165,13 @@ namespace API
 		{
 			Log::GetLog()->critical("Failed to get the offset of '{}'.\nRequested by plugin: {}", name, GetCallingModuleName());
 			Log::GetLog()->flush();
-			Sleep(10000);
-			throw;
+			if (hooks_do_not_throw_)
+				return nullptr;
+			else
+			{
+				Sleep(10000);
+				throw;
+			}
 		}
 
 		return reinterpret_cast<LPVOID>(data_base_ + static_cast<DWORD64>(offsets_dump_[name]));

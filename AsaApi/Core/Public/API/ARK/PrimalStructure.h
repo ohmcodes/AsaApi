@@ -1233,6 +1233,7 @@ struct APrimalStructureItemContainer : APrimalStructure
 
     // Functions
 
+    static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureItemContainer.GetPrivateStaticClass()"); }
     bool IsPowered() { return NativeCall<bool>(this, "APrimalStructureItemContainer.IsPowered()"); }
     static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureItemContainer.StaticClass()"); }
     bool BPApplyPinCode(AShooterPlayerController* ForPC, int appledPinCode, bool bIsSetting, int TheCustomIndex) { return NativeCall<bool, AShooterPlayerController*, int, bool, int>(this, "APrimalStructureItemContainer.BPApplyPinCode(AShooterPlayerController*,int,bool,int)", ForPC, appledPinCode, bIsSetting, TheCustomIndex); }
