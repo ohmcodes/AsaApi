@@ -99,7 +99,7 @@ namespace API
 				Log::GetLog()->info("Added DLL search directory: {}", std::filesystem::path(w).string());
 			}
 
-			if (autoCacheConfig.value("Enable", true)
+			if (false && autoCacheConfig.value("Enable", true)
 				&& autoCacheConfig.value("DownloadCacheURL", defaultCDNUrl) != ""
 				&& (fileHash != storedHash || !fs::exists(offsetsCacheFile) || !fs::exists(bitfieldsCacheFile)))
 			{
@@ -115,7 +115,7 @@ namespace API
 					fs::remove(localFile);
 			}
 
-			if (fileHash != storedHash || !fs::exists(offsetsCacheFile) || !fs::exists(bitfieldsCacheFile))
+			if (false && (fileHash != storedHash || !fs::exists(offsetsCacheFile) || !fs::exists(bitfieldsCacheFile)))
 			{
 				Log::GetLog()->info("Cache refresh required this will take a few seconds to complete");
 				pdb_reader.Read(filepath, &offsets_dump, &bitfields_dump, pdbIgnoreSet);

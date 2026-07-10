@@ -3832,7 +3832,7 @@ struct AShooterPlayerController : ABasePlayerController
     void ToggleHud() { NativeCall<void>(this, "AShooterPlayerController.ToggleHud()"); }
     bool IsHudVisible() { return NativeCall<bool>(this, "AShooterPlayerController.IsHudVisible()"); }
     void ToggleGun() { NativeCall<void>(this, "AShooterPlayerController.ToggleGun()"); }
-    AShooterCharacter* GetPlayerCharacter() { return NativeCall<AShooterCharacter*>(this, "AShooterPlayerController.GetPlayerCharacter()"); }
+	AShooterCharacter* GetPlayerCharacter() { return this->BaseGetPlayerCharacter(); }
     void SetPawn(APawn* InPawn) { NativeCall<void, APawn*>(this, "AShooterPlayerController.SetPawn(APawn*)", InPawn); }
     void SetDoingMeleeAimAssist() { NativeCall<void>(this, "AShooterPlayerController.SetDoingMeleeAimAssist()"); }
     void ToggleTrackingDinoOnMultiUse(APrimalDinoCharacter* Dino) { NativeCall<void, APrimalDinoCharacter*>(this, "AShooterPlayerController.ToggleTrackingDinoOnMultiUse(APrimalDinoCharacter*)", Dino); }
@@ -4181,7 +4181,7 @@ struct AShooterPlayerController : ABasePlayerController
     void ClientReceiveDinoAncestors_Implementation(APrimalDinoCharacter* ForDino, const TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >* DinoAncestors, const TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >* DinoAncestorsMale, int RandomMutationsFemale, int RandomMutationsMale) { NativeCall<void, APrimalDinoCharacter*, const TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >*, const TArray<FDinoAncestorsEntry, TSizedDefaultAllocator<32> >*, int, int>(this, "AShooterPlayerController.ClientReceiveDinoAncestors_Implementation(APrimalDinoCharacter*,TArray<FDinoAncestorsEntry,TSizedDefaultAllocator<32>>&,TArray<FDinoAncestorsEntry,TSizedDefaultAllocator<32>>&,int,int)", ForDino, DinoAncestors, DinoAncestorsMale, RandomMutationsFemale, RandomMutationsMale); }
     void ServerRequestDinoAncestors_Implementation(APrimalDinoCharacter* ForDino) { NativeCall<void, APrimalDinoCharacter*>(this, "AShooterPlayerController.ServerRequestDinoAncestors_Implementation(APrimalDinoCharacter*)", ForDino); }
     void OnPressGroupAddOrRemoveTame() { NativeCall<void>(this, "AShooterPlayerController.OnPressGroupAddOrRemoveTame()"); }
-    AActor* BaseGetPlayerCharacter() { return NativeCall<AActor*>(this, "AShooterPlayerController.BaseGetPlayerCharacter()"); }
+	AShooterCharacter* BaseGetPlayerCharacter() { return NativeCall<AShooterCharacter*>(this, "AShooterPlayerController.BaseGetPlayerCharacter()"); }
     void ClientNotifyUnlockedEngram_Implementation(TSubclassOf<UPrimalItem> ItemClass, bool bTekGram) { NativeCall<void, TSubclassOf<UPrimalItem>, bool>(this, "AShooterPlayerController.ClientNotifyUnlockedEngram_Implementation(TSubclassOf<UPrimalItem>,bool)", ItemClass, bTekGram); }
     void ClientTeleportSucceeded_Implementation(UE::Math::TVector<double>* TeleportLoc, UE::Math::TRotator<double>* TeleportRot, bool bSimpleTeleport) { NativeCall<void, UE::Math::TVector<double>*, UE::Math::TRotator<double>*, bool>(this, "AShooterPlayerController.ClientTeleportSucceeded_Implementation(UE::Math::TVector<double>,UE::Math::TRotator<double>,bool)", TeleportLoc, TeleportRot, bSimpleTeleport); }
     bool IsAtPersonalTameLimit(bool bIsForStructure) { return NativeCall<bool, bool>(this, "AShooterPlayerController.IsAtPersonalTameLimit(bool)", bIsForStructure); }
