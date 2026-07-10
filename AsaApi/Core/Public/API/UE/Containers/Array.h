@@ -444,7 +444,7 @@ public:
 	 *
 	 * @param Other The source array to copy.
 	 */
-	TArray(const TArray& Other)
+	FORCEINLINE TArray(const TArray& Other)
 	{
 		CopyToEmpty(Other.GetData(), Other.Num(), 0);
 	}
@@ -2966,7 +2966,7 @@ private:
 			AllocatorResizeAllocation(ArrayNum, ArrayMax);
 		}
 	}
-	void ResizeForCopy(SizeType NewMax, SizeType PrevMax)
+	FORCEINLINE void ResizeForCopy(SizeType NewMax, SizeType PrevMax)
 	{
 		if (NewMax)
 		{

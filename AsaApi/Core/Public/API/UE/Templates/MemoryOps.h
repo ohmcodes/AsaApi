@@ -106,7 +106,7 @@ FORCEINLINE void DestructItems(ElementType* Element, SizeType Count)
  * @param	Count		The number of elements to copy.
  */
 template <typename DestinationElementType, typename SourceElementType, typename SizeType>
-void ConstructItems(void* Dest, const SourceElementType* Source, SizeType Count)
+FORCEINLINE void ConstructItems(void* Dest, const SourceElementType* Source, SizeType Count)
 {
 	if constexpr (TIsBitwiseConstructible<DestinationElementType, SourceElementType>::Value)
 	{
