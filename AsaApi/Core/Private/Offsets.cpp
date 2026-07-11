@@ -92,7 +92,6 @@ namespace API
 		const auto dos_header = reinterpret_cast<PIMAGE_DOS_HEADER>(module_base_);
 		const auto nt_headers = reinterpret_cast<PIMAGE_NT_HEADERS>(module_base_ + dos_header->e_lfanew);
 
-		
 		// get base of .data section
 		const auto section_count = nt_headers->FileHeader.NumberOfSections;
 		const auto first_section = IMAGE_FIRST_SECTION(nt_headers);
@@ -111,8 +110,6 @@ namespace API
 			Log::GetLog()->error("Failed to get the base of the .data section.");
 			throw;
 		}
-
-		data_base_ += data_section_header->VirtualAddress;
 	}
 
 	Offsets& Offsets::Get()
