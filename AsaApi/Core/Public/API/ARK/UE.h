@@ -29,7 +29,6 @@ struct FObjectPtr
 
 	// Bitfields
 
-
 	// Functions
 
 	bool IsA(const UClass* SomeBase) const { return NativeCall<bool, const UClass*>(this, "FObjectPtr.IsA(UClass*)", SomeBase); }
@@ -89,12 +88,14 @@ struct TWeakObjectPtr
 	}
 
 	TWeakObjectPtr()
-	{}
+	{
+	}
 
 	TWeakObjectPtr(int index, int serialnumber)
 		:ObjectIndex(index),
 		ObjectSerialNumber(serialnumber)
-	{}
+	{
+	}
 };
 
 template <typename T>
@@ -149,7 +150,6 @@ struct FObjectHandlePrivate
 	{
 		return PointerOrRef != 0;
 	}
-
 };
 
 template <typename T>
@@ -200,7 +200,6 @@ struct FSoftObjectPath
 
 	// Bitfields
 
-
 	// Functions
 
 	FString ToString()const { return NativeCall<FString>(this, "FSoftObjectPath.ToString()"); }
@@ -240,14 +239,11 @@ struct FSoftClassPath : FSoftObjectPath
 {
 	// Fields
 
-
 	// Bitfields
-
 
 	// Functions
 
 	UClass* ResolveClass() const { return NativeCall<UClass*>(this, "FSoftClassPath.ResolveClass()"); }
-
 };
 
 template <typename FSoftObjectPath>
@@ -257,7 +253,7 @@ struct TPersistentObjectPtr
 	FSoftObjectPath ObjectID;
 };
 
-struct FSoftObjectPtr : TPersistentObjectPtr<FSoftObjectPath> { };
+struct FSoftObjectPtr : TPersistentObjectPtr<FSoftObjectPath> {};
 
 template <typename T>
 struct TSoftClassPtr
@@ -350,12 +346,10 @@ struct FItemNetID
 
 	// Bitfields
 
-
 	// Functions
 
 	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemNetID>(); }
 };
-
 
 struct UObjectBase
 {
@@ -371,7 +365,6 @@ struct UObjectBase
 	UObject*& OuterPrivateField() { return *GetNativePointerField<UObject**>(this, "UObjectBase.OuterPrivate"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -390,9 +383,7 @@ struct UObjectBaseUtility : UObjectBase
 {
 	// Fields
 
-
 	  // Bitfields
-
 
 	  // Functions
 
@@ -611,9 +602,7 @@ struct UObject : UObjectBaseUtility
 {
 	// Fields
 
-
 	  // Bitfields
-
 
 	  // Functions
 
@@ -691,7 +680,6 @@ struct USparseDataOverrideManager : UObject
 
 	// Bitfields
 
-
 	// Functions
 
 	float RiderFlyingRotationRateModifier_Override_Implementation(float BaseValue, float CurrentValue, const UObject* ForInstance) { return NativeCall<float, float, float, const UObject*>(this, "USparseDataOverrideManager.RiderFlyingRotationRateModifier_Override_Implementation(float,float,UObject*)", BaseValue, CurrentValue, ForInstance); }
@@ -744,14 +732,12 @@ struct UPrimalAssetsBase : UObject
 
 	// Bitfields
 
-
 	// Functions
 
 	static void StaticRegisterNativesUPrimalAssetsBase() { NativeCall<void>(nullptr, "UPrimalAssetsBase.StaticRegisterNativesUPrimalAssetsBase()"); }
 	// 	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "UPrimalAssetsBase.GetPrivateStaticClass()"); }
 	// FUNCTION MISSING: UPrimalAssetsBase.GetPrivateStaticClass()
 	static UClass* StaticClass() { return NativeCall<UClass*>(nullptr, "UPrimalAssetsBase.StaticClass()"); }
-
 };
 
 struct UPrimalAssets : UPrimalAssetsBase
@@ -764,12 +750,10 @@ struct UPrimalAssets : UPrimalAssetsBase
 
 	// Bitfields
 
-
 	// Functions
 
 	static UClass* ClassAssetResolve(TSoftClassPtr<UObject>* Ptr) { return NativeCall<UClass*, TSoftClassPtr<UObject>*>(nullptr, "UPrimalAssets.ClassAssetResolve(TSoftClassPtr<UObject>)", Ptr); }
 };
-
 
 struct UField : UObject
 {
@@ -778,7 +762,6 @@ struct UField : UObject
 	UField*& NextField() { return *GetNativePointerField<UField**>(this, "UField.Next"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -808,7 +791,6 @@ struct UStruct : UField
 	TArray<UObject*, TSizedDefaultAllocator<32> >& ScriptAndPropertyObjectReferencesField() { return *GetNativePointerField<TArray<UObject*, TSizedDefaultAllocator<32> >*>(this, "UStruct.ScriptAndPropertyObjectReferences"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -929,7 +911,6 @@ struct UClass : UStruct
 
 struct UProperty
 {
-
 };
 
 struct FField
@@ -944,7 +925,6 @@ struct FField
 	EObjectFlags& FlagsPrivateField() { return *GetNativePointerField<EObjectFlags*>(this, "FField.FlagsPrivate"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -986,7 +966,6 @@ struct FProperty : FField
 	FProperty*& PostConstructLinkNextField() { return *GetNativePointerField<FProperty**>(this, "FProperty.PostConstructLinkNext"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -1189,7 +1168,6 @@ struct UTexture2D : UTexture
 	FTexture2DResourceMem*& ResourceMemField() { return *GetNativePointerField<FTexture2DResourceMem**>(this, "UTexture2D.ResourceMem"); }
 
 	// Bitfields
-
 
 	// Functions
 
@@ -1883,5 +1861,4 @@ struct USoundBase : UObject
 	//void GetSoundSubmixSends(TArray<FSoundSubmixSendInfo, TSizedDefaultAllocator<32> >& OutSends) const { NativeCall<void, TArray<FSoundSubmixSendInfo, TSizedDefaultAllocator<32> >&>(this, "USoundBase.GetSoundSubmixSends(TArray<FSoundSubmixSendInfo,TSizedDefaultAllocator<32>>&)", OutSends); }
 	UObject* _getUObject()const { return NativeCall<UObject*>(this, "USoundBase._getUObject()"); }
 	bool SupportsSubtitles()const { return NativeCall<bool>(this, "USoundBase.SupportsSubtitles()"); }
-
 };
