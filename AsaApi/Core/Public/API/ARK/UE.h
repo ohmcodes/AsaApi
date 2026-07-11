@@ -12,6 +12,10 @@
 #endif
 
 struct UStruct;
+struct UScriptStruct;
+
+template <typename T>
+UScriptStruct* FindScriptStruct();
 
 struct FObjectPtr
 {
@@ -349,7 +353,7 @@ struct FItemNetID
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemNetID.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemNetID>(); }
 };
 
 

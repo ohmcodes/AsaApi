@@ -148,7 +148,7 @@ struct FPrimalItemSparseClassData
 
     // Functions
 
-    static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalItemSparseClassData.StaticStruct()"); }
+    static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalItemSparseClassData>(); }
     FPrimalItemSparseClassData& operator=(const FPrimalItemSparseClassData* __that) { return NativeCall<FPrimalItemSparseClassData&, const FPrimalItemSparseClassData*>(this, "FPrimalItemSparseClassData.operator=(FPrimalItemSparseClassData&)", __that); }
 
 };

@@ -59,7 +59,7 @@ struct FTrackedActorOverallContainer
 
 	// Functions
 
-	UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTrackedActorOverallContainer.StaticStruct()"); }
+	UScriptStruct* StaticStruct() { return FindScriptStruct<FTrackedActorOverallContainer>(); }
 };
 
 struct UFoliageBaseType : UObject
@@ -95,7 +95,7 @@ struct FSortingTask
 
 	// Functions
 
-	UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FSortingTask.StaticStruct()"); }
+	UScriptStruct* StaticStruct() { return FindScriptStruct<FSortingTask>(); }
 };
 
 struct FContainerTasks
@@ -109,7 +109,7 @@ struct FContainerTasks
 
 	// Functions
 
-	UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FContainerTasks.StaticStruct()"); }
+	UScriptStruct* StaticStruct() { return FindScriptStruct<FContainerTasks>(); }
 };
 
 struct FLootTableEntry
@@ -129,7 +129,7 @@ struct FLootTableEntry
 
 	// Functions
 
-	UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FLootTableEntry.StaticStruct()"); }
+	UScriptStruct* StaticStruct() { return FindScriptStruct<FLootTableEntry>(); }
 };
 
 struct FDateTime
@@ -915,7 +915,7 @@ struct FTribeRankGroup
 
 // 	FTribeRankGroup& operator=(const FTribeRankGroup* __that) { return NativeCall<FTribeRankGroup&, const FTribeRankGroup*>(this, "FTribeRankGroup.operator=(FTribeRankGroup&)", __that); }
 // FUNCTION MISSING: FTribeRankGroup.operator=(FTribeRankGroup&)
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTribeRankGroup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FTribeRankGroup>(); }
 	void ValidateSettings() { NativeCall<void>(this, "FTribeRankGroup.ValidateSettings()"); }
 };
 
@@ -941,7 +941,7 @@ struct FTribeWar
 	FString GetWarTimeString(int DayNumber, float DayTime) { return NativeCall<FString, int, float>(this, "FTribeWar.GetWarTimeString(int,float)", DayNumber, DayTime); }
 	bool IsCurrentlyActive(UWorld* ForWorld) const { return NativeCall<bool, UWorld*>(this, "FTribeWar.IsCurrentlyActive(UWorld*)", ForWorld); }
 	bool IsTribeWarOn(UWorld* ForWorld) const { return NativeCall<bool, UWorld*>(this, "FTribeWar.IsTribeWarOn(UWorld*)", ForWorld); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTribeWar.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FTribeWar>(); }
 };
 struct FTribeAlliance
 {
@@ -957,7 +957,7 @@ struct FTribeAlliance
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTribeAlliance.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FTribeAlliance>(); }
 };
 
 struct FCustomTrackedActorInfo
@@ -1073,7 +1073,7 @@ struct FTribeData
 	void RefreshTribeWars(UWorld* ForWorld) { NativeCall<void, UWorld*>(this, "FTribeData.RefreshTribeWars(UWorld*)", ForWorld); }
 	float GetTribeNameChangeCooldownTime(UObject* WorldContextObject) const { return NativeCall<float, UObject*>(this, "FTribeData.GetTribeNameChangeCooldownTime(UObject*)", WorldContextObject); }
 	int GetDefaultRankGroupIndex() { return NativeCall<int>(this, "FTribeData.GetDefaultRankGroupIndex()"); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTribeData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FTribeData>(); }
 	void CopyFrom(const FTribeData* Source, ETribeDataExclude ExcludeFilter) { NativeCall<void, const FTribeData*, ETribeDataExclude>(this, "FTribeData.CopyFrom(FTribeData&,ETribeDataExclude)", Source, ExcludeFilter); }
 	int GetBestRankGroupForRank(int Rank) const { return NativeCall<int, int>(this, "FTribeData.GetBestRankGroupForRank(int)", Rank); }
 	bool IsTribeAlliedWith(unsigned int OtherTribeID) { return NativeCall<bool, unsigned int>(this, "FTribeData.IsTribeAlliedWith(unsignedint)", OtherTribeID); }
@@ -1190,7 +1190,7 @@ struct FTimerHandle
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FTimerHandle.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FTimerHandle>(); }
 	void Invalidate() { NativeCall<void>(this, "FTimerHandle.Invalidate()"); }
 	bool IsValid()const { return NativeCall<bool>(this, "FTimerHandle.IsValid()"); }
 };
@@ -1208,7 +1208,7 @@ struct FBaseComponentReference
 	// Functions
 
 	UActorComponent* ExtractComponent(struct AActor* SearchActor) const { return NativeCall<UActorComponent*, struct AActor*>(this, "FBaseComponentReference.ExtractComponent(AActor*)", SearchActor); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FBaseComponentReference.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FBaseComponentReference>(); }
 };
 
 struct FSoftComponentReference : FBaseComponentReference
@@ -1223,7 +1223,7 @@ struct FSoftComponentReference : FBaseComponentReference
 
 	bool SerializeFromMismatchedTag(const struct FPropertyTag* Tag, FStructuredArchiveSlot Slot) { return NativeCall<bool, const struct FPropertyTag*, FStructuredArchiveSlot>(this, "FSoftComponentReference.SerializeFromMismatchedTag(FPropertyTag&,FStructuredArchiveSlot)", Tag, Slot); }
 	UActorComponent* GetComponent(struct AActor* OwningActor) const { return NativeCall<UActorComponent*, struct AActor*>(this, "FSoftComponentReference.GetComponent(AActor*)", OwningActor); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FSoftComponentReference.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FSoftComponentReference>(); }
 };
 
 struct UKismetSystemLibrary : UBlueprintFunctionLibrary
@@ -1364,7 +1364,7 @@ struct FPaintingKeyValue
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPaintingKeyValue.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPaintingKeyValue>(); }
 };
 
 struct FARKDinoData
@@ -1391,7 +1391,7 @@ struct FARKDinoData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FARKDinoData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FARKDinoData>(); }
 	bool NetSerialize(FArchive* Ar, UPackageMap* Map, bool& bOutSuccess) { return NativeCall<bool, FArchive*, UPackageMap*, bool&>(this, "FARKDinoData.NetSerialize(FArchive&,UPackageMap*,bool&)", Ar, Map, bOutSuccess); }
 };
 
@@ -1413,7 +1413,7 @@ struct FARKTributeData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FARKTributeData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FARKTributeData>(); }
 };
 
 struct FARKTributeDino
@@ -1434,7 +1434,7 @@ struct FARKTributeDino
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FARKTributeDino.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FARKTributeDino>(); }
 	FARKTributeDino* operator=(const FARKTributeDino* __that) { return NativeCall<FARKTributeDino*, const FARKTributeDino*>(this, "FARKTributeDino.operator=(FARKTributeDino&)", __that); }
 	FARKTributeDino* operator=(FARKTributeDino* __that) { return NativeCall<FARKTributeDino*, FARKTributeDino*>(this, "FARKTributeDino.operator=(FARKTributeDino&)", __that); }
 };
@@ -1455,7 +1455,7 @@ struct FARKTributeDinoListing
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FARKTributeDinoListing.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FARKTributeDinoListing>(); }
 };
 
 struct FAddressInfoResult
@@ -1501,7 +1501,7 @@ struct FAdminPlayerDataInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FAdminPlayerDataInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FAdminPlayerDataInfo>(); }
 };
 
 struct FAggroEntry
@@ -1531,7 +1531,7 @@ struct FAliveNameAndLocation
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FAliveNameAndLocation.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FAliveNameAndLocation>(); }
 };
 
 struct FAlivePlayerDataInfo
@@ -1548,7 +1548,7 @@ struct FAlivePlayerDataInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FAlivePlayerDataInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FAlivePlayerDataInfo>(); }
 };
 
 struct FBPNetExecParams
@@ -1572,7 +1572,7 @@ struct FBPNetExecParams
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FBPNetExecParams.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FBPNetExecParams>(); }
 };
 
 //struct FDamageEvent_vtbl
@@ -1634,7 +1634,7 @@ struct FDamageEvent
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDamageEvent.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDamageEvent>(); }
 	void GetBestHitInfo(const AActor* HitActor, const AActor* HitInstigator, FHitResult* OutHitInfo, UE::Math::TVector<double>& OutImpulseDir) { NativeCall<void, const AActor*, const AActor*, FHitResult*, UE::Math::TVector<double>&>(this, "FDamageEvent.GetBestHitInfo(AActor*,AActor*,FHitResult&,UE::Math::TVector<double>&)", HitActor, HitInstigator, OutHitInfo, OutImpulseDir); }
 	int GetTypeID()const { return NativeCall<int>(this, "FDamageEvent.GetTypeID()"); }
 	bool IsOfType(int InID) const { return NativeCall<bool, int>(this, "FDamageEvent.IsOfType(int)", InID); }
@@ -1665,7 +1665,7 @@ struct FDamageHarvestingEntry
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDamageHarvestingEntry.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDamageHarvestingEntry>(); }
 };
 
 struct FDamagePrimalCharacterStatusValueModifier
@@ -1694,7 +1694,7 @@ struct FDamagePrimalCharacterStatusValueModifier
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDamagePrimalCharacterStatusValueModifier.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDamagePrimalCharacterStatusValueModifier>(); }
 };
 
 struct FDamageTypeAdjuster
@@ -1714,7 +1714,7 @@ struct FDamageTypeAdjuster
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDamageTypeAdjuster.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDamageTypeAdjuster>(); }
 };
 
 struct FDinoAbilities
@@ -1728,7 +1728,7 @@ struct FDinoAbilities
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoAbilities.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoAbilities>(); }
 };
 
 struct FDinoAbilityInfo
@@ -1743,7 +1743,7 @@ struct FDinoAbilityInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoAbilityInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoAbilityInfo>(); }
 };
 
 struct FDinoAncestorsEntry
@@ -1770,7 +1770,7 @@ struct FDinoAncestorsEntry
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoAncestorsEntry.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoAncestorsEntry>(); }
 };
 
 struct FDinoAncestorsEntryBlueprint
@@ -1788,7 +1788,7 @@ struct FDinoAncestorsEntryBlueprint
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoAncestorsEntryBlueprint.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoAncestorsEntryBlueprint>(); }
 };
 
 struct FDinoAttackInfo
@@ -1893,7 +1893,7 @@ struct FDinoAttackInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoAttackInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoAttackInfo>(); }
 	FDinoAttackInfo* operator=(const FDinoAttackInfo* __that) { return NativeCall<FDinoAttackInfo*, const FDinoAttackInfo*>(this, "FDinoAttackInfo.operator=(FDinoAttackInfo&)", __that); }
 	FDinoAttackInfo* operator=(FDinoAttackInfo* __that) { return NativeCall<FDinoAttackInfo*, FDinoAttackInfo*>(this, "FDinoAttackInfo.operator=(FDinoAttackInfo&)", __that); }
 };
@@ -1911,7 +1911,7 @@ struct FDinoBabySetup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoBabySetup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoBabySetup>(); }
 };
 
 struct FDinoBaseLevelWeightEntry
@@ -1930,7 +1930,7 @@ struct FDinoBaseLevelWeightEntry
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoBaseLevelWeightEntry.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoBaseLevelWeightEntry>(); }
 };
 
 struct FDinoClassCount
@@ -1949,7 +1949,7 @@ struct FDinoClassCount
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoClassCount.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoClassCount>(); }
 };
 
 struct FDinoClassCountStruct
@@ -1968,7 +1968,7 @@ struct FDinoClassCountStruct
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoClassCountStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoClassCountStruct>(); }
 };
 
 struct FDinoDownloadData
@@ -1982,7 +1982,7 @@ struct FDinoDownloadData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoDownloadData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoDownloadData>(); }
 };
 
 struct FDinoExtraDefaultItemList
@@ -1997,7 +1997,7 @@ struct FDinoExtraDefaultItemList
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoExtraDefaultItemList.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoExtraDefaultItemList>(); }
 };
 
 struct FDinoFoodEffectivenessMultipliers
@@ -2018,7 +2018,7 @@ struct FDinoFoodEffectivenessMultipliers
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoFoodEffectivenessMultipliers.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoFoodEffectivenessMultipliers>(); }
 };
 
 struct FDinoKey
@@ -2048,7 +2048,7 @@ struct FDinoMapMarkerInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoMapMarkerInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoMapMarkerInfo>(); }
 };
 
 struct FDinoOrderGroup
@@ -2063,7 +2063,7 @@ struct FDinoOrderGroup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoOrderGroup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoOrderGroup>(); }
 	FDinoOrderGroup* operator=(const FDinoOrderGroup* __that) { return NativeCall<FDinoOrderGroup*, const FDinoOrderGroup*>(this, "FDinoOrderGroup.operator=(FDinoOrderGroup&)", __that); }
 };
 
@@ -2079,7 +2079,7 @@ struct FDinoOrderID
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoOrderID.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoOrderID>(); }
 };
 
 struct FDinoSaddleStruct
@@ -2094,7 +2094,7 @@ struct FDinoSaddleStruct
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoSaddleStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoSaddleStruct>(); }
 };
 
 struct FDinoSetup
@@ -2131,7 +2131,7 @@ struct FDinoSetup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoSetup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoSetup>(); }
 	FDinoSetup* operator=(const FDinoSetup* __that) { return NativeCall<FDinoSetup*, const FDinoSetup*>(this, "FDinoSetup.operator=(FDinoSetup&)", __that); }
 	FDinoSetup* operator=(FDinoSetup* __that) { return NativeCall<FDinoSetup*, FDinoSetup*>(this, "FDinoSetup.operator=(FDinoSetup&)", __that); }
 	// 	void SetBaseLevels(EPrimalCharacterStatusValue::Type StatusType, int Value) { NativeCall<void, EPrimalCharacterStatusValue::Type, int>(this, "FDinoSetup.SetBaseLevels(EPrimalCharacterStatusValue::Type,int)", StatusType, Value); }
@@ -2155,7 +2155,7 @@ struct FDinoSetupGroup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoSetupGroup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoSetupGroup>(); }
 	FDinoSetupGroup* operator=(const FDinoSetupGroup* __that) { return NativeCall<FDinoSetupGroup*, const FDinoSetupGroup*>(this, "FDinoSetupGroup.operator=(FDinoSetupGroup&)", __that); }
 	FDinoSetupGroup* operator=(FDinoSetupGroup* __that) { return NativeCall<FDinoSetupGroup*, FDinoSetupGroup*>(this, "FDinoSetupGroup.operator=(FDinoSetupGroup&)", __that); }
 };
@@ -2172,7 +2172,7 @@ struct FDinoSpawnWeightMultiplier
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FDinoSpawnWeightMultiplier.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FDinoSpawnWeightMultiplier>(); }
 };
 
 struct FEngramCustomFolder
@@ -2186,7 +2186,7 @@ struct FEngramCustomFolder
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FEngramCustomFolder.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FEngramCustomFolder>(); }
 };
 
 struct FEngramEntries
@@ -2199,7 +2199,7 @@ struct FEngramEntries
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FEngramEntries.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FEngramEntries>(); }
 };
 
 struct FEngramEntryAutoUnlock
@@ -2213,7 +2213,7 @@ struct FEngramEntryAutoUnlock
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FEngramEntryAutoUnlock.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FEngramEntryAutoUnlock>(); }
 };
 
 struct FEngramEntryOverride
@@ -2229,7 +2229,7 @@ struct FEngramEntryOverride
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FEngramEntryOverride.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FEngramEntryOverride>(); }
 };
 
 struct FEngramsSetSoftReferenceMapping
@@ -2242,7 +2242,7 @@ struct FEngramsSetSoftReferenceMapping
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FEngramsSetSoftReferenceMapping.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FEngramsSetSoftReferenceMapping>(); }
 };
 
 struct FFrame : FOutputDevice
@@ -2298,7 +2298,7 @@ struct FFunctionCaller
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FFunctionCaller.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FFunctionCaller>(); }
 };
 
 struct FActorInstanceHandle
@@ -2366,7 +2366,7 @@ struct FHitResult
 
 // 	static FHitResult* GetReversedHit(FHitResult* result, const FHitResult* Hit) { return NativeCall<FHitResult*, FHitResult*, const FHitResult*>(nullptr, "FHitResult.GetReversedHit(FHitResult&)", result, Hit); }
 // FUNCTION MISSING: FHitResult.GetReversedHit(FHitResult&)
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FHitResult.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FHitResult>(); }
 	bool NetSerialize(FArchive* Ar, UPackageMap* Map, bool* bOutSuccess) { return NativeCall<bool, FArchive*, UPackageMap*, bool*>(this, "FHitResult.NetSerialize(FArchive&,UPackageMap*,bool&)", Ar, Map, bOutSuccess); }
 };
 
@@ -2395,7 +2395,7 @@ struct FHordeCrateDifficultyLevel
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FHordeCrateDifficultyLevel.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FHordeCrateDifficultyLevel>(); }
 };
 
 struct FHordeCrateEvent
@@ -2411,7 +2411,7 @@ struct FHordeCrateEvent
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FHordeCrateEvent.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FHordeCrateEvent>(); }
 };
 
 struct FHordeCrateNPCGroup
@@ -2428,7 +2428,7 @@ struct FHordeCrateNPCGroup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FHordeCrateNPCGroup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FHordeCrateNPCGroup>(); }
 };
 
 struct FHordeCrateWave
@@ -2444,7 +2444,7 @@ struct FHordeCrateWave
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FHordeCrateWave.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FHordeCrateWave>(); }
 };
 
 struct FItemAttachmentInfo
@@ -2480,7 +2480,7 @@ struct FItemAttachmentInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemAttachmentInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemAttachmentInfo>(); }
 };
 
 struct FItemCount
@@ -2515,7 +2515,7 @@ struct FItemCraftQueueEntry
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemCraftQueueEntry.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemCraftQueueEntry>(); }
 };
 
 struct FItemCraftingConsumptionReplenishment
@@ -2529,7 +2529,7 @@ struct FItemCraftingConsumptionReplenishment
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemCraftingConsumptionReplenishment.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemCraftingConsumptionReplenishment>(); }
 };
 
 struct FItemCraftingCostOverride
@@ -2543,7 +2543,7 @@ struct FItemCraftingCostOverride
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemCraftingCostOverride.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemCraftingCostOverride>(); }
 };
 
 struct FItemInfo
@@ -2572,7 +2572,7 @@ struct FItemMaxItemQuantityOverride
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemMaxItemQuantityOverride.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemMaxItemQuantityOverride>(); }
 };
 
 struct FItemMultiplier
@@ -2586,7 +2586,7 @@ struct FItemMultiplier
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemMultiplier.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemMultiplier>(); }
 };
 
 struct FItemNetInfo
@@ -2659,7 +2659,7 @@ struct FItemNetInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemNetInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemNetInfo>(); }
 	FItemNetInfo* operator=(FItemNetInfo* __that) { return NativeCall<FItemNetInfo*, FItemNetInfo*>(this, "FItemNetInfo.operator=(FItemNetInfo&)", __that); }
 	FItemNetInfo* operator=(const FItemNetInfo* __that) { return NativeCall<FItemNetInfo*, const FItemNetInfo*>(this, "FItemNetInfo.operator=(FItemNetInfo&)", __that); }
 	bool NetSerialize(FArchive* Ar, UPackageMap* Map, bool* bOutSuccess) { return NativeCall<bool, FArchive*, UPackageMap*, bool*>(this, "FItemNetInfo.NetSerialize(FArchive&,UPackageMap*,bool&)", Ar, Map, bOutSuccess); }
@@ -2683,7 +2683,7 @@ struct FItemSetup
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemSetup.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemSetup>(); }
 };
 
 struct FItemStatInfo
@@ -2725,7 +2725,7 @@ struct FItemStatInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemStatInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemStatInfo>(); }
 	float GetItemStatModifier(unsigned __int16 ItemStatValue) { return NativeCall<float, unsigned __int16>(this, "FItemStatInfo.GetItemStatModifier(unsignedshort)", ItemStatValue); }
 	unsigned __int16 GetRandomValue(float QualityLevel, float MinRandomQuality, float* outRandonMultiplier) { return NativeCall<unsigned __int16, float, float, float*>(this, "FItemStatInfo.GetRandomValue(float,float,float*)", QualityLevel, MinRandomQuality, outRandonMultiplier); }
 };
@@ -2744,7 +2744,7 @@ struct FItemToDinoStatParams
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FItemToDinoStatParams.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FItemToDinoStatParams>(); }
 };
 
 struct FMultiUseEntry
@@ -2792,7 +2792,7 @@ struct FMultiUseEntry
 	// Functions
 
 	void operator=(const FMultiUseEntry* InVal) { NativeCall<void, const FMultiUseEntry*>(this, "FMultiUseEntry.operator=(FMultiUseEntry&)", InVal); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FMultiUseEntry.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FMultiUseEntry>(); }
 };
 
 struct FMultiUseWheelOption
@@ -2806,7 +2806,7 @@ struct FMultiUseWheelOption
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FMultiUseWheelOption.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FMultiUseWheelOption>(); }
 };
 
 struct FNetExecParams
@@ -2822,7 +2822,7 @@ struct FNetExecParams
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FNetExecParams.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FNetExecParams>(); }
 };
 
 struct FPointOfInterestData
@@ -2882,7 +2882,7 @@ struct FPointOfInterestData
 	// Functions
 
 	FPointOfInterestData* operator=(const FPointOfInterestData* __that) { return NativeCall<FPointOfInterestData*, const FPointOfInterestData*>(this, "FPointOfInterestData.operator=(FPointOfInterestData&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPointOfInterestData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPointOfInterestData>(); }
 	// 	bool IsPointInitialized() { return NativeCall<bool>(this, "FPointOfInterestData.IsPointInitialized()"); }
 	// FUNCTION MISSING: FPointOfInterestData.IsPointInitialized()
 };
@@ -2897,7 +2897,7 @@ struct FPointOfInterestData_ForCompanion
 	// Bitfields
 
 	// Functions
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPointOfInterestData_ForCompanion.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPointOfInterestData_ForCompanion>(); }
 };
 
 struct FPrimalCharacterStatusStateDefinition
@@ -2919,7 +2919,7 @@ struct FPrimalCharacterStatusStateDefinition
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalCharacterStatusStateDefinition.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalCharacterStatusStateDefinition>(); }
 };
 
 struct FPrimalCharacterStatusStateThresholds
@@ -2935,7 +2935,7 @@ struct FPrimalCharacterStatusStateThresholds
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalCharacterStatusStateThresholds.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalCharacterStatusStateThresholds>(); }
 };
 
 struct FPrimalCharacterStatusValueDefinition
@@ -2950,7 +2950,7 @@ struct FPrimalCharacterStatusValueDefinition
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalCharacterStatusValueDefinition.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalCharacterStatusValueDefinition>(); }
 };
 
 struct FPrimalCharacterStatusValueModifier
@@ -2971,7 +2971,7 @@ struct FPrimalCharacterStatusValueModifier
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalCharacterStatusValueModifier.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalCharacterStatusValueModifier>(); }
 };
 
 struct FPrimalItemDefinition
@@ -2986,7 +2986,7 @@ struct FPrimalItemDefinition
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalItemDefinition.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalItemDefinition>(); }
 };
 
 struct FPrimalItemQuality
@@ -3004,7 +3004,7 @@ struct FPrimalItemQuality
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalItemQuality.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalItemQuality>(); }
 };
 
 struct FPrimalItemStatDefinition
@@ -3018,7 +3018,7 @@ struct FPrimalItemStatDefinition
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalItemStatDefinition.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalItemStatDefinition>(); }
 };
 
 struct FPrimalMapMarkerEntryData
@@ -3036,7 +3036,7 @@ struct FPrimalMapMarkerEntryData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalMapMarkerEntryData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalMapMarkerEntryData>(); }
 };
 
 struct FPrimalPersistentCharacterStatsStruct
@@ -3067,7 +3067,7 @@ struct FPrimalPersistentCharacterStatsStruct
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalPersistentCharacterStatsStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalPersistentCharacterStatsStruct>(); }
 	FPrimalPersistentCharacterStatsStruct* operator=(const FPrimalPersistentCharacterStatsStruct* __that) { return NativeCall<FPrimalPersistentCharacterStatsStruct*, const FPrimalPersistentCharacterStatsStruct*>(this, "FPrimalPersistentCharacterStatsStruct.operator=(FPrimalPersistentCharacterStatsStruct&)", __that); }
 	//void FPrimalPersistentCharacterStatsStruct() { NativeCall<void>(this, "FPrimalPersistentCharacterStatsStruct.FPrimalPersistentCharacterStatsStruct()"); }
 	//void ~FPrimalPersistentCharacterStatsStruct() { NativeCall<void>(this, "FPrimalPersistentCharacterStatsStruct.~FPrimalPersistentCharacterStatsStruct()"); }
@@ -3106,7 +3106,7 @@ struct FPrimalPlayerCharacterConfigStruct
 	//void FPrimalPlayerCharacterConfigStruct(const FPrimalPlayerCharacterConfigStruct* __that) { NativeCall<void, const FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStruct.FPrimalPlayerCharacterConfigStruct(FPrimalPlayerCharacterConfigStruct&)", __that); }
 	FPrimalPlayerCharacterConfigStruct* operator=(const FPrimalPlayerCharacterConfigStruct* __that) { return NativeCall<FPrimalPlayerCharacterConfigStruct*, const FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStruct.operator=(FPrimalPlayerCharacterConfigStruct&)", __that); }
 	//void FPrimalPlayerCharacterConfigStruct() { NativeCall<void>(this, "FPrimalPlayerCharacterConfigStruct.FPrimalPlayerCharacterConfigStruct()"); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalPlayerCharacterConfigStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalPlayerCharacterConfigStruct>(); }
 	//void FPrimalPlayerCharacterConfigStruct(FPrimalPlayerCharacterConfigStruct* __that) { NativeCall<void, FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStruct.FPrimalPlayerCharacterConfigStruct(FPrimalPlayerCharacterConfigStruct&)", __that); }
 	FPrimalPlayerCharacterConfigStruct* operator=(FPrimalPlayerCharacterConfigStruct* __that) { return NativeCall<FPrimalPlayerCharacterConfigStruct*, FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStruct.operator=(FPrimalPlayerCharacterConfigStruct&)", __that); }
 };
@@ -3151,7 +3151,7 @@ struct FPrimalPlayerDataStruct
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalPlayerDataStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalPlayerDataStruct>(); }
 	FPrimalPlayerDataStruct* operator=(const FPrimalPlayerDataStruct* __that) { return NativeCall<FPrimalPlayerDataStruct*, const FPrimalPlayerDataStruct*>(this, "FPrimalPlayerDataStruct.operator=(FPrimalPlayerDataStruct&)", __that); }
 };
 
@@ -3240,7 +3240,7 @@ struct FCustomItemByteArray
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCustomItemByteArray.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCustomItemByteArray>(); }
 };
 
 struct FCustomItemByteArrays
@@ -3254,7 +3254,7 @@ struct FCustomItemByteArrays
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCustomItemByteArrays.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCustomItemByteArrays>(); }
 	FCustomItemByteArrays* operator=(const FCustomItemByteArrays* __that) { return NativeCall<FCustomItemByteArrays*, const FCustomItemByteArrays*>(this, "FCustomItemByteArrays.operator=(FCustomItemByteArrays&)", __that); }
 };
 
@@ -3269,7 +3269,7 @@ struct FCustomItemDoubles
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCustomItemDoubles.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCustomItemDoubles>(); }
 };
 
 struct FCustomItemData
@@ -3307,7 +3307,7 @@ struct FCustomItemData
 	bool Serialize(FArchive* Ar) { return NativeCall<bool, FArchive*>(this, "FCustomItemData.Serialize(FArchive&)", Ar); }
 	FCustomItemData& operator=(FCustomItemData* __that) { return NativeCall<FCustomItemData&, FCustomItemData*>(this, "FCustomItemData.operator=(FCustomItemData&&)", __that); }
 	FCustomItemData& operator=(const FCustomItemData* __that) { return NativeCall<FCustomItemData&, const FCustomItemData*>(this, "FCustomItemData.operator=(FCustomItemData&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCustomItemData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCustomItemData>(); }
 };
 
 struct FWeightedObjectList
@@ -3321,7 +3321,7 @@ struct FWeightedObjectList
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FWeightedObjectList.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FWeightedObjectList>(); }
 	UObject* GetRandomObject() { return NativeCall<UObject*>(this, "FWeightedObjectList.GetRandomObject()"); }
 };
 
@@ -3333,7 +3333,7 @@ struct FVector_NetQuantize : UE::Math::TVector<double>
 
 	  // Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FVector_NetQuantize.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FVector_NetQuantize>(); }
 	bool NetSerialize(FArchive* Ar, UPackageMap* Map, bool* bOutSuccess) { return NativeCall<bool, FArchive*, UPackageMap*, bool*>(this, "FVector_NetQuantize.NetSerialize(FArchive&,UPackageMap*,bool&)", Ar, Map, bOutSuccess); }
 };
 
@@ -3367,7 +3367,7 @@ struct FUseItemAddCharacterStatusValue
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FUseItemAddCharacterStatusValue.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FUseItemAddCharacterStatusValue>(); }
 };
 
 struct FUniqueNetId
@@ -3440,7 +3440,7 @@ struct FCharacterAndControllerPair
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCharacterAndControllerPair.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCharacterAndControllerPair>(); }
 };
 
 struct FRadialDamageParams
@@ -3457,7 +3457,7 @@ struct FRadialDamageParams
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FRadialDamageParams.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FRadialDamageParams>(); }
 };
 
 struct FRadialDamageEvent : FDamageEvent
@@ -3475,7 +3475,7 @@ struct FRadialDamageEvent : FDamageEvent
 	void GetBestHitInfo(const AActor* HitActor, const AActor* HitInstigator, FHitResult* OutHitInfo, UE::Math::TVector<double>& OutImpulseDir) { NativeCall<void, const AActor*, const AActor*, FHitResult*, UE::Math::TVector<double>&>(this, "FRadialDamageEvent.GetBestHitInfo(AActor*,AActor*,FHitResult&,UE::Math::TVector<double>&)", HitActor, HitInstigator, OutHitInfo, OutImpulseDir); }
 	int GetTypeID()const { return NativeCall<int>(this, "FRadialDamageEvent.GetTypeID()"); }
 	bool IsOfType(int InID) const { return NativeCall<bool, int>(this, "FRadialDamageEvent.IsOfType(int)", InID); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FRadialDamageEvent.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FRadialDamageEvent>(); }
 };
 
 struct FPointDamageEvent : FDamageEvent
@@ -3492,7 +3492,7 @@ struct FPointDamageEvent : FDamageEvent
 
 	void GetBestHitInfo(const AActor* HitActor, const AActor* HitInstigator, FHitResult* OutHitInfo, UE::Math::TVector<double>* OutImpulseDir) { NativeCall<void, const AActor*, const AActor*, FHitResult*, UE::Math::TVector<double>*>(this, "FPointDamageEvent.GetBestHitInfo(AActor*,AActor*,FHitResult&,UE::Math::TVector<double>&)", HitActor, HitInstigator, OutHitInfo, OutImpulseDir); }
 	int GetTypeID()const { return NativeCall<int>(this, "FPointDamageEvent.GetTypeID()"); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPointDamageEvent.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPointDamageEvent>(); }
 	bool IsOfType(int InID) const { return NativeCall<bool, int>(this, "FPointDamageEvent.IsOfType(int)", InID); }
 };
 
@@ -3506,7 +3506,7 @@ struct FUserCosmeticInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FUserCosmeticInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FUserCosmeticInfo>(); }
 };
 
 struct IMemoryReadStream
@@ -3558,7 +3558,7 @@ struct FOverlappedFoliageElement
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FOverlappedFoliageElement.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FOverlappedFoliageElement>(); }
 };
 
 struct FPlacementData
@@ -3588,7 +3588,7 @@ struct FPlacementData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPlacementData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPlacementData>(); }
 };
 
 struct FPaths
@@ -3746,7 +3746,7 @@ struct FJustInTimeTexture2D
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FJustInTimeTexture2D.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FJustInTimeTexture2D>(); }
 	FJustInTimeTexture2D& operator=(const FJustInTimeTexture2D* ThatTexture) { return NativeCall<FJustInTimeTexture2D&, const FJustInTimeTexture2D*>(this, "FJustInTimeTexture2D.operator=(FJustInTimeTexture2D&)", ThatTexture); }
 	FJustInTimeTexture2D& operator=(UTexture2D* ThatTexture) { return NativeCall<FJustInTimeTexture2D&, UTexture2D*>(this, "FJustInTimeTexture2D.operator=(UTexture2D*)", ThatTexture); }
 	// 	void OnPostLoad(UTexture2D** ppTextureToPotentiallyJIT) { NativeCall<void, UTexture2D**>(this, "FJustInTimeTexture2D.OnPostLoad(UTexture2D**)", ppTextureToPotentiallyJIT); }
@@ -3820,7 +3820,7 @@ struct FFunctionParams_NoArrays
 	FFunctionParams_NoArrays& operator=(FFunctionParams_NoArrays* __that) { return NativeCall<FFunctionParams_NoArrays&, FFunctionParams_NoArrays*>(this, "FFunctionParams_NoArrays.operator=(FFunctionParams_NoArrays&&)", __that); }
 	FFunctionParams_NoArrays& operator=(const FFunctionParams_NoArrays* __that) { return NativeCall<FFunctionParams_NoArrays&, const FFunctionParams_NoArrays*>(this, "FFunctionParams_NoArrays.operator=(FFunctionParams_NoArrays&)", __that); }
 	void CopyFunctionParams(const FFunctionParams_NoArrays* InParams) { NativeCall<void, const FFunctionParams_NoArrays*>(this, "FFunctionParams_NoArrays.CopyFunctionParams(FFunctionParams_NoArrays&)", InParams); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FFunctionParams_NoArrays.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FFunctionParams_NoArrays>(); }
 };
 
 struct FStructureVariant
@@ -3842,5 +3842,5 @@ struct FStructureVariant
 	// Functions
 
 	FStructureVariant& operator=(FStructureVariant* __that) { return NativeCall<FStructureVariant&, FStructureVariant*>(this, "FStructureVariant.operator=(FStructureVariant&&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FStructureVariant.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FStructureVariant>(); }
 };

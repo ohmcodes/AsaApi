@@ -1279,7 +1279,7 @@ struct FMapData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FMapData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FMapData>(); }
 };
 
 struct UMinimapData : UObject

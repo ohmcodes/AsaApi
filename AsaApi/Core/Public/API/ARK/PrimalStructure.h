@@ -9,7 +9,7 @@ struct FPrimalWirelessReferences
 	TSet<APrimalStructureItemContainer*, DefaultKeyFuncs<APrimalStructureItemContainer*, 0>, FDefaultSetAllocator>& WirelessSourcesField() { return *GetNativePointerField<TSet<APrimalStructureItemContainer*, DefaultKeyFuncs<APrimalStructureItemContainer*, 0>, FDefaultSetAllocator>*>(this, "FPrimalWirelessReferences.WirelessSources"); }
 	TSet<APrimalStructureItemContainer*, DefaultKeyFuncs<APrimalStructureItemContainer*, 0>, FDefaultSetAllocator>& WirelessConsumersField() { return *GetNativePointerField<TSet<APrimalStructureItemContainer*, DefaultKeyFuncs<APrimalStructureItemContainer*, 0>, FDefaultSetAllocator>*>(this, "FPrimalWirelessReferences.WirelessConsumers"); }
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalWirelessReferences.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalWirelessReferences>(); }
 	~FPrimalWirelessReferences() { NativeCall<void>(this, "FPrimalWirelessReferences.~FPrimalWirelessReferences()"); }
 };
 
@@ -45,7 +45,7 @@ struct FPrimalTargetableActorSparseClassData
     // Functions
 
     FPrimalTargetableActorSparseClassData& operator=(const FPrimalTargetableActorSparseClassData* __that) { return NativeCall<FPrimalTargetableActorSparseClassData&, const FPrimalTargetableActorSparseClassData*>(this, "FPrimalTargetableActorSparseClassData.operator=(FPrimalTargetableActorSparseClassData&)", __that); }
-    static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalTargetableActorSparseClassData.StaticStruct()"); }
+    static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalTargetableActorSparseClassData>(); }
 
 };
 
@@ -350,7 +350,7 @@ struct FPrimalStructureSparseClassData : FPrimalTargetableActorSparseClassData
     // Functions
 
     FPrimalStructureSparseClassData& operator=(const FPrimalStructureSparseClassData* __that) { return NativeCall<FPrimalStructureSparseClassData&, const FPrimalStructureSparseClassData*>(this, "FPrimalStructureSparseClassData.operator=(FPrimalStructureSparseClassData&)", __that); }
-    static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalStructureSparseClassData.StaticStruct()"); }
+    static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalStructureSparseClassData>(); }
 
 };
 
@@ -980,8 +980,8 @@ struct APrimalStructure : APrimalTargetableActor
     void GetWindSourceComponents(TArray<UActorComponent*, TSizedDefaultAllocator<32> >* Components, int includePriorityGreaterThan, bool bIsFirstPerson) { NativeCall<void, TArray<UActorComponent*, TSizedDefaultAllocator<32> >*, int, bool>(this, "APrimalStructure.GetWindSourceComponents(TArray<UActorComponent*,TSizedDefaultAllocator<32>>&,int,bool)", Components, includePriorityGreaterThan, bIsFirstPerson); }
     bool ShouldPerformMeshingCheck(bool bIsFinalPlacement) { return NativeCall<bool, bool>(this, "APrimalStructure.ShouldPerformMeshingCheck(bool)", bIsFinalPlacement); }
     AActor* GetBasedOnDinoAsActor(bool bUseReplicatedData, bool bOnlyConsciousDino) { return NativeCall<AActor*, bool, bool>(this, "APrimalStructure.GetBasedOnDinoAsActor(bool,bool)", bUseReplicatedData, bOnlyConsciousDino); }
-    TSubclassOf<UPrimalItem> GetConsumesPrimalItem() { return this->GetPrimalStructureSparseClassData(EGetSparseClassDataMethod::ArchetypeIfNull)->ConsumesPrimalItemField(); }
-    FPrimalStructureSparseClassData* GetPrimalStructureSparseClassData(EGetSparseClassDataMethod GetMethod) { return NativeCall<FPrimalStructureSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalStructure.GetPrimalStructureSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+    TSubclassOf<UPrimalItem> GetConsumesPrimalItem() { return this->GetPrimalStructureSparseClassData()->ConsumesPrimalItemField(); }
+    FPrimalStructureSparseClassData* GetPrimalStructureSparseClassData() { return NativeCall<FPrimalStructureSparseClassData*>(this, "APrimalStructure.GetPrimalStructureSparseClassData()"); }
 };
 
 struct APrimalStructureBearTrap : APrimalStructure

@@ -95,7 +95,7 @@ struct FPrimalBotCharacterSparseClassData : FPrimalDinoCharacterSparseClassData
 
     // Functions
 
-    static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalBotCharacterSparseClassData.StaticStruct()"); }
+    static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalBotCharacterSparseClassData>(); }
     FPrimalBotCharacterSparseClassData& operator=(const FPrimalBotCharacterSparseClassData* __that) { return NativeCall<FPrimalBotCharacterSparseClassData&, const FPrimalBotCharacterSparseClassData*>(this, "FPrimalBotCharacterSparseClassData.operator=(FPrimalBotCharacterSparseClassData&)", __that); }
 
 };

@@ -99,7 +99,7 @@ struct __declspec(align(8)) FPrimalPlayerCharacterConfigStructReplicated
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalPlayerCharacterConfigStructReplicated.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalPlayerCharacterConfigStructReplicated>(); }
 	FPrimalPlayerCharacterConfigStruct* GetPlayerCharacterConfig(FPrimalPlayerCharacterConfigStruct* result) { return NativeCall<FPrimalPlayerCharacterConfigStruct*, FPrimalPlayerCharacterConfigStruct*>(this, "FPrimalPlayerCharacterConfigStructReplicated.GetPlayerCharacterConfig()", result); }
 	FPrimalPlayerCharacterConfigStructReplicated& operator=(struct FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated&, struct FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&&)", __that); }
 	FPrimalPlayerCharacterConfigStructReplicated& operator=(const struct FPrimalPlayerCharacterConfigStructReplicated* __that) { return NativeCall<FPrimalPlayerCharacterConfigStructReplicated&, const struct FPrimalPlayerCharacterConfigStructReplicated*>(this, "FPrimalPlayerCharacterConfigStructReplicated.operator=(FPrimalPlayerCharacterConfigStructReplicated&)", __that); }
@@ -4828,7 +4828,7 @@ struct FPrimalCharacterSparseClassData
 	// Functions
 
 	FPrimalCharacterSparseClassData& operator=(const FPrimalCharacterSparseClassData* __that) { return NativeCall<FPrimalCharacterSparseClassData&, const FPrimalCharacterSparseClassData*>(this, "FPrimalCharacterSparseClassData.operator=(FPrimalCharacterSparseClassData&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalCharacterSparseClassData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalCharacterSparseClassData>(); }
 };
 
 struct APrimalCharacter : ACharacter
@@ -6016,7 +6016,7 @@ struct FShooterCharacterSparseClassData : FPrimalCharacterSparseClassData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FShooterCharacterSparseClassData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FShooterCharacterSparseClassData>(); }
 	FShooterCharacterSparseClassData& operator=(const FShooterCharacterSparseClassData* __that) { return NativeCall<FShooterCharacterSparseClassData&, const FShooterCharacterSparseClassData*>(this, "FShooterCharacterSparseClassData.operator=(FShooterCharacterSparseClassData&)", __that); }
 };
 
@@ -7458,7 +7458,7 @@ struct FPrimalDinoCharacterSparseClassData : FPrimalCharacterSparseClassData
 	// Functions
 
 	FPrimalDinoCharacterSparseClassData& operator=(const FPrimalDinoCharacterSparseClassData* __that) { return NativeCall<FPrimalDinoCharacterSparseClassData&, const FPrimalDinoCharacterSparseClassData*>(this, "FPrimalDinoCharacterSparseClassData.operator=(FPrimalDinoCharacterSparseClassData&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalDinoCharacterSparseClassData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalDinoCharacterSparseClassData>(); }
 };
 
 struct APrimalDinoCharacter : APrimalCharacter
@@ -12332,7 +12332,7 @@ struct FPrimalWheeledCharSparseClassData : FPrimalDinoCharacterSparseClassData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FPrimalWheeledCharSparseClassData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FPrimalWheeledCharSparseClassData>(); }
 };
 
 struct APrimalWheeledVehicleCharacter : APrimalDinoCharacter
@@ -13514,7 +13514,7 @@ struct FUnreplicatedEggData
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FUnreplicatedEggData.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FUnreplicatedEggData>(); }
 };
 
 struct FCreatureGeneTraitSpawnInfo
@@ -13528,7 +13528,7 @@ struct FCreatureGeneTraitSpawnInfo
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCreatureGeneTraitSpawnInfo.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCreatureGeneTraitSpawnInfo>(); }
 };
 
 struct FCreatureSpawnGeneTraits_Specifications
@@ -13544,7 +13544,7 @@ struct FCreatureSpawnGeneTraits_Specifications
 	// Functions
 
 	FCreatureSpawnGeneTraits_Specifications& operator=(const struct FCreatureSpawnGeneTraits_Specifications* __that) { return NativeCall<FCreatureSpawnGeneTraits_Specifications&, const struct FCreatureSpawnGeneTraits_Specifications*>(this, "FCreatureSpawnGeneTraits_Specifications.operator=(FCreatureSpawnGeneTraits_Specifications&)", __that); }
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FCreatureSpawnGeneTraits_Specifications.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FCreatureSpawnGeneTraits_Specifications>(); }
 };
 
 struct FGeneTraitSpecification
@@ -13558,7 +13558,7 @@ struct FGeneTraitSpecification
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FGeneTraitSpecification.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FGeneTraitSpecification>(); }
 };
 
 struct FGeneTraitSkipCodeChecksStruct
@@ -13572,7 +13572,7 @@ struct FGeneTraitSkipCodeChecksStruct
 
 	// Functions
 
-	static UScriptStruct* StaticStruct() { return NativeCall<UScriptStruct*>(nullptr, "FGeneTraitSkipCodeChecksStruct.StaticStruct()"); }
+	static UScriptStruct* StaticStruct() { return FindScriptStruct<FGeneTraitSkipCodeChecksStruct>(); }
 };
 
 struct UGeneTraitDefinitions : UObject
