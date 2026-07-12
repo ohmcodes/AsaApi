@@ -2412,7 +2412,7 @@ struct AShooterPlayerState : APlayerState
 	void NotifyPlayerJoinedTribe_Implementation(const FString& ThePlayerName, const FString& TribeName, bool Joinee) { NativeCall<void, const FString&, const FString&, bool>(this, "AShooterPlayerState.NotifyPlayerJoinedTribe_Implementation(FString&,FString&,bool)", ThePlayerName, TribeName, Joinee); }
 	void NotifyTribememberJoined_Implementation(const FString& ThePlayerName) { NativeCall<void, const FString&>(this, "AShooterPlayerState.NotifyTribememberJoined_Implementation(FString&)", ThePlayerName); }
 	void Destroyed() { NativeCall<void>(this, "AShooterPlayerState.Destroyed()"); }
-	FString* GetPlayerName(FString* result) { return NativeCall<FString*, FString*>(this, "AShooterPlayerState.GetPlayerName()", result); }
+	//FString* GetPlayerName(FString* result) { return NativeCall<FString*, FString*>(this, "AShooterPlayerState.GetPlayerName()", result); }
 	int GetHexCostToPurchaseNextEngramPoint() { return NativeCall<int>(this, "AShooterPlayerState.GetHexCostToPurchaseNextEngramPoint()"); }
 	static void StaticRegisterNativesAShooterPlayerState() { NativeCall<void>(nullptr, "AShooterPlayerState.StaticRegisterNativesAShooterPlayerState()"); }
 	bool AllowDinoOrderByGroup(APrimalDinoCharacter* orderDino) { return NativeCall<bool, APrimalDinoCharacter*>(this, "AShooterPlayerState.AllowDinoOrderByGroup(APrimalDinoCharacter*)", orderDino); }
