@@ -250,9 +250,17 @@ namespace API
 		{
     		HMODULE HModule = nullptr;
 			
-			if (GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | 	GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)address, &HModule)) 
+			if (GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | 	GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT, (LPCSTR)address, &HModule))
 			{
         	return HModule;
+			}
+
+			MEMORY_BASIC_INFORMATION mbi{};
+			if (VirtualQuery(address, &mbi, sizeof(mbi)) == sizeof(mbi)
+				&& mbi.State == MEM_COMMIT
+				&& mbi.AllocationBase != nullptr)
+			{
+				return reinterpret_cast<HMODULE>(mbi.AllocationBase);
 			}
 
     		return std::nullopt;
