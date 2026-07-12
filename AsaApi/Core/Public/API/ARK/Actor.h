@@ -6419,7 +6419,7 @@ struct AShooterCharacter : APrimalCharacter
 
 	// Functions
 
-	static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "AShooterCharacter.GetPrivateStaticClass()"); }
+	static UClass* GetPrivateStaticClass() { return StaticClass(); }
 	void ClientNetEndClimbingLadder() { NativeCall<void>(this, "AShooterCharacter.ClientNetEndClimbingLadder()"); }
 	void DetachFromLadder() { NativeCall<void>(this, "AShooterCharacter.DetachFromLadder()"); }
 	void DetachGrapHookCable() { NativeCall<void>(this, "AShooterCharacter.DetachGrapHookCable()"); }
