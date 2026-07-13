@@ -981,7 +981,10 @@ struct APrimalStructure : APrimalTargetableActor
     bool ShouldPerformMeshingCheck(bool bIsFinalPlacement) { return NativeCall<bool, bool>(this, "APrimalStructure.ShouldPerformMeshingCheck(bool)", bIsFinalPlacement); }
     AActor* GetBasedOnDinoAsActor(bool bUseReplicatedData, bool bOnlyConsciousDino) { return NativeCall<AActor*, bool, bool>(this, "APrimalStructure.GetBasedOnDinoAsActor(bool,bool)", bUseReplicatedData, bOnlyConsciousDino); }
     TSubclassOf<UPrimalItem> GetConsumesPrimalItem() { return this->GetPrimalStructureSparseClassData()->ConsumesPrimalItemField(); }
-    FPrimalStructureSparseClassData* GetPrimalStructureSparseClassData() { return NativeCall<FPrimalStructureSparseClassData*>(this, "APrimalStructure.GetPrimalStructureSparseClassData()"); }
+    FPrimalStructureSparseClassData* GetPrimalStructureSparseClassData()
+    {
+        return (FPrimalStructureSparseClassData*)this->ClassPrivateField()->GetSparseClassData(EGetSparseClassDataMethod::CreateIfNull);
+    }
 };
 
 struct APrimalStructureBearTrap : APrimalStructure

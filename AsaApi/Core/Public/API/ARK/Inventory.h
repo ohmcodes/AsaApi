@@ -855,7 +855,10 @@ struct UPrimalItem : UObject
 	const TArray<TSoftClassPtr<APrimalStructure>, TSizedDefaultAllocator<32> >* GetAllStructuresToBuild() { return NativeCall<const TArray<TSoftClassPtr<APrimalStructure>, TSizedDefaultAllocator<32> >*>(this, "UPrimalItem.GetAllStructuresToBuild()"); }
 	void ConsumeCraftingResources(TArray<FCustomItemData, TSizedDefaultAllocator<32> >* ItemDataOutBuffer, float* ItemDurabilityUsed) { NativeCall<void, TArray<FCustomItemData, TSizedDefaultAllocator<32> >*, float*>(this, "UPrimalItem.ConsumeCraftingResources(TArray<FCustomItemData,TSizedDefaultAllocator<32>>*,float*)", ItemDataOutBuffer, ItemDurabilityUsed); }
 	void ConsumeRepairingResources(float RepairPercent) { NativeCall<void, float>(this, "UPrimalItem.ConsumeRepairingResources(float)", RepairPercent); }
-	FPrimalItemSparseClassData* GetPrimalItemSparseClassData(EGetSparseClassDataMethod GetMethod) { return NativeCall<FPrimalItemSparseClassData*, EGetSparseClassDataMethod>(this, "UPrimalItem.GetPrimalItemSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+	FPrimalItemSparseClassData* GetPrimalItemSparseClassData(EGetSparseClassDataMethod GetMethod)
+	{
+		return (FPrimalItemSparseClassData*)this->ClassPrivateField()->GetSparseClassData(GetMethod);
+	}
 	bool HasCustomItemData(FName CustomDataName) { return NativeCall<bool, FName>(this, "UPrimalItem.HasCustomItemData(FName)", CustomDataName); }
 };
 

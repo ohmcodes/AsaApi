@@ -1977,7 +1977,10 @@ struct APrimalTargetableActor : AActor
 	bool AllowRadialDamageWithoutVisiblityTrace(const FHitResult* Hit) { return NativeCall<bool, const FHitResult*>(this, "APrimalTargetableActor.AllowRadialDamageWithoutVisiblityTrace(FHitResult&)", Hit); }
 	bool IsInvincible() { return NativeCall<bool>(this, "APrimalTargetableActor.IsInvincible()"); }
 	void HarvestingDepleted(UPrimalHarvestingComponent* fromComponent) { NativeCall<void, UPrimalHarvestingComponent*>(this, "APrimalTargetableActor.HarvestingDepleted(UPrimalHarvestingComponent*)", fromComponent); }
-	struct FPrimalTargetableActorSparseClassData* GetPrimalTargetableActorSparseClassData(EGetSparseClassDataMethod GetMethod) { return NativeCall<struct FPrimalTargetableActorSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalTargetableActor.GetPrimalTargetableActorSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+	struct FPrimalTargetableActorSparseClassData* GetPrimalTargetableActorSparseClassData(EGetSparseClassDataMethod GetMethod)
+	{
+		return (FPrimalTargetableActorSparseClassData*)this->ClassPrivateField()->GetSparseClassData(GetMethod);
+	}
 };
 
 struct AInfo : AActor
@@ -5907,7 +5910,10 @@ struct APrimalCharacter : ACharacter
 	void OnRep_ReplicateMovement() { NativeCall<void>(this, "APrimalCharacter.OnRep_ReplicateMovement()"); }
 	bool ShouldUseArmorDurabilityVFX() { return NativeCall<bool>(this, "APrimalCharacter.ShouldUseArmorDurabilityVFX()"); }
 	//void GetExtraSaveMovedData(FSavedMove_Character* ForMove) { NativeCall<void, FSavedMove_Character*>(this, "APrimalCharacter.GetExtraSaveMovedData(FSavedMove_Character*)", ForMove); }
-	FPrimalCharacterSparseClassData* GetPrimalCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) const { return NativeCall<FPrimalCharacterSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalCharacter.GetPrimalCharacterSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+	FPrimalCharacterSparseClassData* GetPrimalCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) const
+	{
+		return (FPrimalCharacterSparseClassData*)const_cast<APrimalCharacter*>(this)->ClassPrivateField()->GetSparseClassData(GetMethod);
+	}
 	FString* PlayerCommand(FString* result, FString* TheCommand) { return NativeCall<FString*, FString*, FString*>(this, "APrimalCharacter.PlayerCommand(FString&)", result, TheCommand); }
 	FString* PlayerCommand_Implementation(FString* result, FString* TheCommand) { return NativeCall<FString*, FString*, FString*>(this, "APrimalCharacter.PlayerCommand_Implementation(FString&)", result, TheCommand); }
 };
@@ -6801,8 +6807,14 @@ struct AShooterCharacter : APrimalCharacter
 	void UnProne(bool bClientSimulation) { NativeCall<void, bool>(this, "AShooterCharacter.UnProne(bool)", bClientSimulation); }
 	//     UPrimalItem* GetShieldItem() { return NativeCall<UPrimalItem*>(this, "AShooterCharacter.GetShieldItem()"); }
 	// FUNCTION MISSING: AShooterCharacter.GetShieldItem()
-	FShooterCharacterSparseClassData* GetShooterCharacterSparseClassData()const { return NativeCall<FShooterCharacterSparseClassData*>(this, "AShooterCharacter.GetShooterCharacterSparseClassData()"); }
-	FShooterCharacterSparseClassData* GetShooterCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) const { return NativeCall<FShooterCharacterSparseClassData*, EGetSparseClassDataMethod>(this, "AShooterCharacter.GetShooterCharacterSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+	FShooterCharacterSparseClassData* GetShooterCharacterSparseClassData() const
+	{
+		return GetShooterCharacterSparseClassData(EGetSparseClassDataMethod::CreateIfNull);
+	}
+	FShooterCharacterSparseClassData* GetShooterCharacterSparseClassData(EGetSparseClassDataMethod GetMethod) const
+	{
+		return (FShooterCharacterSparseClassData*)const_cast<AShooterCharacter*>(this)->ClassPrivateField()->GetSparseClassData(GetMethod);
+	}
 };
 
 struct UPrimalLocalProfile : UObject {
@@ -12397,7 +12409,10 @@ struct APrimalWheeledVehicleCharacter : APrimalDinoCharacter
 	void ReceiveHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, UE::Math::TVector<double>* HitLocation, UE::Math::TVector<double>* HitNormal, UE::Math::TVector<double>* NormalImpulse, const FHitResult* Hit) { NativeCall<void, UPrimitiveComponent*, AActor*, UPrimitiveComponent*, bool, UE::Math::TVector<double>*, UE::Math::TVector<double>*, UE::Math::TVector<double>*, const FHitResult*>(this, "APrimalWheeledVehicleCharacter.ReceiveHit(UPrimitiveComponent*,AActor*,UPrimitiveComponent*,bool,UE::Math::TVector<double>,UE::Math::TVector<double>,UE::Math::TVector<double>,FHitResult&)", MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit); }
 	void GetCameraRelatedCollisionHeight(float* InCollisionHeight) { NativeCall<void, float*>(this, "APrimalWheeledVehicleCharacter.GetCameraRelatedCollisionHeight(float&)", InCollisionHeight); }
 	void OverrideCameraSweepChannel(ECollisionChannel* InSweepChannel) { NativeCall<void, ECollisionChannel*>(this, "APrimalWheeledVehicleCharacter.OverrideCameraSweepChannel(ECollisionChannel&)", InSweepChannel); }
-	FPrimalWheeledCharSparseClassData* GetPrimalWheeledCharSparseClassData(EGetSparseClassDataMethod GetMethod) const { return NativeCall<FPrimalWheeledCharSparseClassData*, EGetSparseClassDataMethod>(this, "APrimalWheeledVehicleCharacter.GetPrimalWheeledCharSparseClassData(EGetSparseClassDataMethod)", GetMethod); }
+	FPrimalWheeledCharSparseClassData* GetPrimalWheeledCharSparseClassData(EGetSparseClassDataMethod GetMethod) const
+	{
+		return (FPrimalWheeledCharSparseClassData*)const_cast<APrimalWheeledVehicleCharacter*>(this)->ClassPrivateField()->GetSparseClassData(GetMethod);
+	}
 };
 
 struct APrimalWorldModifier : AActor
