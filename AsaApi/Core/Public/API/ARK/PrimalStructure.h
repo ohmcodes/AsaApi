@@ -2766,7 +2766,7 @@ struct APrimalStructureUnderwaterBase : APrimalStructureItemContainer
 
     // Functions
 
-    static UClass* GetPrivateStaticClass() { return NativeCall<UClass*>(nullptr, "APrimalStructureUnderwaterBase.GetPrivateStaticClass()"); }
+    static UClass* GetPrivateStaticClass() { return static_cast<UClass*>(Globals::StaticFindObject(UClass::GetPrivateStaticClass(), nullptr, TEXT("/Script/ShooterGame.PrimalStructureUnderwaterBase"), false)); }
     void SetPortholeState(int index, int NewState) { NativeCall<void, int, int>(this, "APrimalStructureUnderwaterBase.SetPortholeState(int,int)", index, NewState); }
     static void StaticRegisterNativesAPrimalStructureUnderwaterBase() { NativeCall<void>(nullptr, "APrimalStructureUnderwaterBase.StaticRegisterNativesAPrimalStructureUnderwaterBase()"); }
     void ValidateGeneratedRepEnums(const TArray<FRepRecord, TSizedDefaultAllocator<32> >* ClassReps) { NativeCall<void, const TArray<FRepRecord, TSizedDefaultAllocator<32> >*>(this, "APrimalStructureUnderwaterBase.ValidateGeneratedRepEnums(TArray<FRepRecord,TSizedDefaultAllocator<32>>&)", ClassReps); }
