@@ -6545,7 +6545,8 @@ struct AShooterCharacter : APrimalCharacter
 	float GetCarryingSocketYaw(bool RefreshBones) { return NativeCall<float, bool>(this, "AShooterCharacter.GetCarryingSocketYaw(bool)", RefreshBones); }
 	bool CanBeCarried(APrimalCharacter* ByCarrier) { return NativeCall<bool, APrimalCharacter*>(this, "AShooterCharacter.CanBeCarried(APrimalCharacter*)", ByCarrier); }
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty, TSizedDefaultAllocator<32> >* OutLifetimeProps) { NativeCall<void, TArray<FLifetimeProperty, TSizedDefaultAllocator<32> >*>(this, "AShooterCharacter.GetLifetimeReplicatedProps(TArray<FLifetimeProperty,TSizedDefaultAllocator<32>>&)", OutLifetimeProps); }
-	bool IsTargeting() { return NativeCall<bool>(this, "AShooterCharacter.IsTargeting()"); }
+	//Deprecated
+	//bool IsTargeting() { return NativeCall<bool>(this, "AShooterCharacter.IsTargeting()"); }
 	bool IsFirstPerson() { return NativeCall<bool>(this, "AShooterCharacter.IsFirstPerson()"); }
 	bool IsFirstPersonCamera() { return NativeCall<bool>(this, "AShooterCharacter.IsFirstPersonCamera()"); }
 	void SetActorHiddenInGame(bool bNewHidden) { NativeCall<void, bool>(this, "AShooterCharacter.SetActorHiddenInGame(bool)", bNewHidden); }
